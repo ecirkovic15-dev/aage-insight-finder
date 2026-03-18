@@ -1,0 +1,27 @@
+import { ReportType, employerMetrics, candidateMetrics, Metric } from "@/data/aageData";
+import { MetricCard } from "./MetricCard";
+
+interface OverviewGridProps {
+  reportType: ReportType;
+  selectedMetricId: string | null;
+  onSelectMetric: (metric: Metric) => void;
+}
+
+export function OverviewGrid({ reportType, selectedMetricId, onSelectMetric }: OverviewGridProps) {
+  const metrics = reportType === "employer" ? employerMetrics : candidateMetrics;
+  // Show top metrics in overview
+  const topMetrics = metrics.slice(0, 6);
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {topMetrics.map((metric) => (
+        <MetricCard
+          key={metric.id}
+          metric={metric}
+          isSelected={selectedMetricId === metric.id}
+          onClick={() => onSelectMetric(metric)}
+        />
+      ))}
+    </div>
+  );
+}
