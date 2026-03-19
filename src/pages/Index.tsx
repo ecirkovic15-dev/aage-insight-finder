@@ -171,7 +171,7 @@ const Index = () => {
                                     ? "bg-graduate-light text-graduate"
                                     : available >= 2
                                     ? "bg-employer-light text-employer"
-                                    : "bg-warning-light text-warning-badge"
+                                    : "text-[hsl(0,40%,45%)]"
                                 }`}>
                                   {available}/4 years
                                 </span>
