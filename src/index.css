@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,64 +7,72 @@
 
 @layer base {
   :root {
-    --background: 0 0% 97%;
-    --foreground: 220 15% 15%;
+    --background: 210 20% 97%;
+    --foreground: 220 61% 23%;
     --surface: 0 0% 100%;
-    --surface-foreground: 220 15% 15%;
+    --surface-foreground: 220 61% 23%;
 
     --card: 0 0% 100%;
-    --card-foreground: 220 15% 15%;
+    --card-foreground: 220 61% 23%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 220 15% 15%;
+    --popover-foreground: 220 61% 23%;
 
-    --primary: 220 15% 15%;
-    --primary-foreground: 0 0% 97%;
+    --primary: 219 94% 69%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 10% 94%;
-    --secondary-foreground: 220 15% 20%;
+    --secondary: 207 100% 90%;
+    --secondary-foreground: 220 61% 23%;
 
-    --muted: 220 10% 94%;
-    --muted-foreground: 220 8% 50%;
+    --muted: 210 15% 94%;
+    --muted-foreground: 218 13% 34%;
 
-    --accent: 220 10% 94%;
-    --accent-foreground: 220 15% 15%;
+    --accent: 42 97% 65%;
+    --accent-foreground: 220 61% 23%;
 
-    --destructive: 0 72% 51%;
+    --destructive: 7 77% 54%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 10% 88%;
-    --input: 220 10% 88%;
-    --ring: 220 15% 15%;
+    --border: 0 0% 84%;
+    --input: 0 0% 84%;
+    --ring: 219 94% 69%;
 
-    --radius: 0px;
+    --radius: 8px;
 
-    /* AAGE Domain Colors */
-    --employer: 225 60% 45%;
-    --employer-light: 225 60% 92%;
-    --candidate: 35 70% 55%;
-    --candidate-light: 35 70% 92%;
+    /* AAGE Domain Colors — mapped to Prosple palette */
+    --employer: 219 94% 69%;
+    --employer-light: 207 100% 90%;
+    --candidate: 42 97% 65%;
+    --candidate-light: 42 90% 92%;
     --graduate: 150 50% 40%;
     --graduate-light: 150 50% 90%;
-    --warning: 15 70% 50%;
-    --warning-light: 15 80% 92%;
+    --warning: 7 77% 54%;
+    --warning-light: 7 80% 94%;
     --success: 150 50% 40%;
 
+    /* Prosple specific */
+    --midnight: 220 61% 23%;
+    --slate: 218 13% 34%;
+    --onahau: 207 100% 90%;
+    --cornflower: 219 94% 69%;
+    --sandy: 42 97% 65%;
+    --poppy: 7 77% 54%;
+
     /* Functional */
-    --chart-1: 225 60% 45%;
-    --chart-2: 35 70% 55%;
+    --chart-1: 219 94% 69%;
+    --chart-2: 42 97% 65%;
     --chart-3: 150 50% 40%;
     --chart-4: 280 45% 55%;
-    --chart-5: 0 60% 55%;
+    --chart-5: 7 77% 54%;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 10% 30%;
-    --sidebar-primary: 220 15% 15%;
-    --sidebar-primary-foreground: 0 0% 97%;
-    --sidebar-accent: 220 10% 94%;
-    --sidebar-accent-foreground: 220 15% 15%;
-    --sidebar-border: 220 10% 88%;
-    --sidebar-ring: 225 60% 45%;
+    --sidebar-background: 220 61% 23%;
+    --sidebar-foreground: 207 100% 90%;
+    --sidebar-primary: 219 94% 69%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 50% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 40% 32%;
+    --sidebar-ring: 219 94% 69%;
   }
 }
 
@@ -73,11 +82,10 @@
   }
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-feature-settings: "ss01", "ss02";
   }
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.03em;
-    font-weight: 500;
+    letter-spacing: -0.01em;
+    font-weight: 600;
   }
 }
 
@@ -123,7 +131,7 @@
     border-color: hsl(var(--employer));
   }
   .shadow-tight {
-    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(24, 48, 94, 0.08);
   }
   .transition-snap {
     transition: all 150ms cubic-bezier(0.2, 0, 0, 1);
