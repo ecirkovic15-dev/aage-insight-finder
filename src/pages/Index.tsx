@@ -206,19 +206,33 @@ const Index = () => {
                   if (metricAnecdotes.length === 0) return null;
                   return (
                     <div>
-                      <div className="mb-3">
-                        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                          Real-World Anecdotes — From Customer Conversations
-                        </h3>
-                        <p className="text-[10px] text-muted-foreground mt-1">
-                          Extracted from Prosple sales meeting transcripts that validate this trend.
-                        </p>
+                      <div className="mb-3 flex items-center justify-between">
+                        <div>
+                          <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                            Real-World Anecdotes — From Customer Conversations
+                          </h3>
+                          <p className="text-[10px] text-muted-foreground mt-1">
+                            Extracted from Prosple sales meeting transcripts that validate this trend.
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Label htmlFor="anecdote-toggle" className="text-[11px] text-muted-foreground cursor-pointer">
+                            {showAnecdotes ? "Showing" : "Hidden"}
+                          </Label>
+                          <Switch
+                            id="anecdote-toggle"
+                            checked={showAnecdotes}
+                            onCheckedChange={setShowAnecdotes}
+                          />
+                        </div>
                       </div>
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        {metricAnecdotes.map((anecdote, i) => (
-                          <AnecdoteCard key={anecdote.id} anecdote={anecdote} index={i} />
-                        ))}
-                      </div>
+                      {showAnecdotes && (
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                          {metricAnecdotes.map((anecdote, i) => (
+                            <AnecdoteCard key={anecdote.id} anecdote={anecdote} index={i} />
+                          ))}
+                        </div>
+                      )}
                     </div>
                   );
                 })()}
