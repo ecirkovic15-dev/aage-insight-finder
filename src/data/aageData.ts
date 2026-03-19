@@ -684,10 +684,10 @@ export const graduateMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of graduates who feel safe and supported to be their authentic self at work all or most of the time.",
     dataPoints: [
-      { year: 2023, value: null, source: "2023 AAGE Graduate Survey", questionNote: "Not in first 50 pages" },
+      { year: 2023, value: 90, source: "2023 AAGE Graduate Survey", pageRef: "p54", questionNote: "52% all the time + 38% most of the time. Top Ten: 98% (77% all the time)" },
       { year: 2024, value: null, source: "2024 AAGE Graduate Survey", questionNote: "Not extracted" },
       { year: 2025, value: null, source: "2025 AAGE Graduate Survey", questionNote: "Not available" },
-      { year: 2026, value: 81, source: "2026 AAGE Graduate Survey", pageRef: "p50", questionNote: "41% all the time + 40% most of the time" },
+      { year: 2026, value: 81, source: "2026 AAGE Graduate Survey", pageRef: "p50", questionNote: "41% all the time + 40% most of the time. Top 15: 91% (55% all the time)" },
     ],
     isNewQuestion: true,
     yearIntroduced: 2026,
