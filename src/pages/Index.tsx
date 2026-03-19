@@ -30,7 +30,7 @@ const Index = () => {
     <SearchProvider reportType={reportType}>
       <div className="h-screen flex flex-col bg-background">
         <WelcomeModal
-          onBrowse={() => {}}
+          onSelectReport={(type) => { setReportType(type); setSelectedMetric(null); }}
           onPrompt={() => { setTimeout(() => searchInputRef.current?.focus(), 100); }}
         />
         <Header
