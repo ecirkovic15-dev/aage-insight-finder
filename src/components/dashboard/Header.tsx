@@ -8,7 +8,7 @@ import { AnimatePresence } from "framer-motion";
 interface HeaderProps {
   reportType: ReportType;
   onReportTypeChange: (type: ReportType) => void;
-  onSelectMetric: (metric: Metric) => void;
+  onSelectMetric: (metric: Metric, reportType?: ReportType) => void;
   searchInputRef?: RefObject<HTMLInputElement>;
 }
 
