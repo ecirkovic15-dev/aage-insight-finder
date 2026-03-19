@@ -50,6 +50,11 @@ export function WelcomeModal({ onSelectReport, onPrompt }: WelcomeModalProps) {
               <p className="text-xs text-muted-foreground mt-1.5">
                 Choose a survey to explore, or search across all data
               </p>
+              <div className="mt-3 mx-auto max-w-sm px-3 py-2 rounded-md bg-warning-light border border-warning/30">
+                <p className="text-[10px] font-medium text-warning-badge leading-relaxed">
+                  ⚠ INTERNAL USE ONLY — This tool references AAGE industry partner reports. Data must not be shared externally or reproduced outside Prosple.
+                </p>
+              </div>
             </div>
 
             {/* Report options */}
