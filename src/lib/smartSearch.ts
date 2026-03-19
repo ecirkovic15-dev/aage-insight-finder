@@ -1,7 +1,7 @@
 // Client-side "smart search" — extracts keywords from natural language prompts
 // and scores metrics + anecdotes by relevance. No backend required.
 
-import { Metric, employerMetrics, candidateMetrics, ReportType } from "@/data/aageData";
+import { Metric, employerMetrics, candidateMetrics, graduateMetrics, internMetrics, ReportType } from "@/data/aageData";
 import { Anecdote, anecdotes } from "@/data/anecdotes";
 
 // ── Synonyms & concept mapping ──────────────────────────────────────────────
@@ -11,14 +11,19 @@ const CONCEPT_MAP: Record<string, string[]> = {
   salary:    ["salary", "salaries", "pay", "compensation", "remuneration", "wage", "starting salary"],
   reneg:     ["reneg", "reneging", "renege", "reneged", "withdraw", "withdrawal", "back out", "backed out"],
   application: ["application", "applications", "apply", "applying", "applied", "volume", "volumes"],
-  intern:    ["intern", "internship", "internships", "placement", "placements", "work experience"],
-  conversion:["conversion", "convert", "converting", "retained", "retention", "intern to grad"],
+   intern:    ["intern", "internship", "internships", "placement", "placements", "work experience", "vacation work", "clerkship"],
+   conversion:["conversion", "convert", "converting", "retained", "retention", "intern to grad", "pipeline", "intern to graduate"],
   offer:     ["offer", "offers", "acceptance", "accepted", "decline", "declined", "multiple offers"],
   cost:      ["cost", "costs", "spend", "spending", "budget", "marketing cost", "selection cost", "cost per hire"],
   career:    ["career", "career progression", "career development", "progression", "growth", "advancement"],
   diversity: ["diversity", "dei", "indigenous", "disability", "inclusion", "equity"],
   virtual:   ["virtual", "online", "remote", "hybrid", "digital", "video"],
-  assessment:["assessment", "assessments", "testing", "psychometric", "screening", "selection"],
+   assessment:["assessment", "assessments", "testing", "psychometric", "screening", "selection"],
+   rotation:  ["rotation", "rotations", "rotate", "rotating", "rotational"],
+   nps:       ["nps", "net promoter", "promoter score", "recommend", "recommendation"],
+   engagement:["engagement", "engaged", "nes", "net engagement", "engagement score"],
+   wellbeing: ["wellbeing", "well-being", "wellness", "mental health", "authentic self", "psychological safety"],
+   flexibility:["flexibility", "flexible", "remote", "hybrid", "wfh", "work from home", "compressed week"],
   trend:     ["trend", "trends", "growing", "increasing", "declining", "changing", "shifting", "surge"],
   challenge: ["challenge", "challenges", "problem", "problems", "pain point", "issue", "struggle"],
   candidate: ["candidate", "candidates", "student", "students", "graduate", "graduates", "applicant"],
@@ -131,7 +136,13 @@ export function smartSearch(prompt: string, reportType: ReportType): SearchResul
   if (keywords.length === 0) return [];
   
   const results: SearchResult[] = [];
-  const metrics = reportType === "employer" ? employerMetrics : candidateMetrics;
+  const metricsMap: Record<ReportType, Metric[]> = {
+    employer: employerMetrics,
+    candidate: candidateMetrics,
+    graduate: graduateMetrics,
+    intern: internMetrics,
+  };
+  const metrics = metricsMap[reportType];
   
   // Score each metric
   for (const m of metrics) {

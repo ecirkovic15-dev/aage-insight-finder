@@ -38,6 +38,8 @@ export function Header({ reportType, onReportTypeChange, onSelectMetric, searchI
   const types: { key: ReportType; label: string }[] = [
     { key: "employer", label: "Employer" },
     { key: "candidate", label: "Candidate" },
+    { key: "graduate", label: "Graduate" },
+    { key: "intern", label: "Intern" },
   ];
 
   return (

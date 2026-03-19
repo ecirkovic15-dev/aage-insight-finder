@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import { ReportType, Metric, employerMetrics, candidateMetrics } from "@/data/aageData";
+import { ReportType, Metric, employerMetrics, candidateMetrics, graduateMetrics, internMetrics } from "@/data/aageData";
 import { getAnecdotesForMetric } from "@/data/anecdotes";
 import { SearchProvider } from "@/context/SearchContext";
 import { Header } from "@/components/dashboard/Header";
@@ -52,7 +52,7 @@ const Index = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-lg font-medium">
-                    {reportType === "employer" ? "Employer Survey" : "Candidate Survey"} Overview
+                    {{ employer: "Employer Survey", candidate: "Candidate Survey", graduate: "Graduate Survey", intern: "Intern Survey" }[reportType]} Overview
                   </h2>
                   <p className="text-xs text-muted-foreground mt-1">
                     Select a metric below or from the sidebar to explore trends. All data sourced
@@ -99,7 +99,7 @@ const Index = () => {
                 <div className="bg-surface border border-border rounded-lg overflow-hidden">
                   <div className="px-4 py-3 border-b border-border">
                     <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                      All {reportType === "employer" ? "Employer" : "Candidate"} Metrics — Data Dictionary
+                      All {{ employer: "Employer", candidate: "Candidate", graduate: "Graduate", intern: "Intern" }[reportType]} Metrics — Data Dictionary
                     </h3>
                   </div>
                   <div className="overflow-x-auto">
@@ -115,7 +115,7 @@ const Index = () => {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border">
-                        {(reportType === "employer" ? employerMetrics : candidateMetrics).map((m) => {
+                        {({ employer: employerMetrics, candidate: candidateMetrics, graduate: graduateMetrics, intern: internMetrics }[reportType]).map((m) => {
                           const available = m.dataPoints.filter((d) => d.value !== null).length;
                           return (
                             <tr
