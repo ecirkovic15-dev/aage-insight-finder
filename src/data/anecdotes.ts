@@ -14,7 +14,7 @@ export interface Anecdote {
     participants: string[];
   };
   featured: boolean; // particularly strong/surprising
-  category: "employer" | "candidate" | "both";
+  category: "employer" | "candidate" | "graduate" | "intern" | "both";
 }
 
 export const anecdotes: Anecdote[] = [
