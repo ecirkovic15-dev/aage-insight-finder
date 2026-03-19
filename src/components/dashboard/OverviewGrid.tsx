@@ -1,4 +1,4 @@
-import { ReportType, employerMetrics, candidateMetrics, Metric } from "@/data/aageData";
+import { ReportType, employerMetrics, candidateMetrics, graduateMetrics, internMetrics, Metric } from "@/data/aageData";
 import { MetricCard } from "./MetricCard";
 
 interface OverviewGridProps {
