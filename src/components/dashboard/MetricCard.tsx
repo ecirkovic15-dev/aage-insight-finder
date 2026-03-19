@@ -52,8 +52,10 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
             </span>
             {changePercent !== null && (
               <span className={`flex items-center gap-0.5 font-mono-data text-xs font-medium ${
-                changePercent >= 0 ? "text-[hsl(150,50%,35%)]" : "text-destructive"
-              }`}>
+                changePercent >= 0 ? "text-[hsl(150,50%,35%)]" : "text-[hsl(0,40%,45%)]"
+              }`}
+              style={changePercent < 0 ? { backgroundColor: "hsl(0, 53%, 88%)", padding: "2px 6px", borderRadius: "4px" } : undefined}
+              >
                 {changePercent >= 0
                   ? <TrendingUp className="w-3 h-3" />
                   : <TrendingDown className="w-3 h-3" />
