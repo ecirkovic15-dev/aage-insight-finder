@@ -18,42 +18,42 @@ export function DataTable({ metric }: DataTableProps) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.15 }}
-      className="bg-surface border border-border"
+      transition={{ duration: 0.25, delay: 0.1 }}
+      className="bg-card border border-border rounded-lg overflow-hidden"
     >
-      <div className="px-4 py-3 border-b border-border">
-        <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+      <div className="px-5 py-3.5 border-b border-border">
+        <h3 className="text-sm font-semibold text-foreground">
           Raw Data
         </h3>
       </div>
-      <table className="w-full text-xs">
+      <table className="w-full text-[13px]">
         <thead>
-          <tr className="border-b border-border">
-            <th className="text-left px-4 py-2 font-mono text-muted-foreground font-medium">Year</th>
-            <th className="text-right px-4 py-2 font-mono text-muted-foreground font-medium">Value</th>
-            <th className="text-left px-4 py-2 font-mono text-muted-foreground font-medium">Source</th>
-            <th className="text-left px-4 py-2 font-mono text-muted-foreground font-medium">Status</th>
+          <tr className="border-b border-border bg-muted/30">
+            <th className="text-left px-5 py-2.5 font-medium text-muted-foreground text-xs">Year</th>
+            <th className="text-right px-5 py-2.5 font-medium text-muted-foreground text-xs">Value</th>
+            <th className="text-left px-5 py-2.5 font-medium text-muted-foreground text-xs">Source</th>
+            <th className="text-left px-5 py-2.5 font-medium text-muted-foreground text-xs">Status</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-border">
           {years.map((year) => {
             const dp = metric.dataPoints.find((d) => d.year === year);
             return (
-              <tr key={year} className="hover:bg-muted/50 transition-snap">
-                <td className="px-4 py-2.5 font-mono-data font-medium">{year}</td>
-                <td className="px-4 py-2.5 text-right font-mono-data font-semibold">
+              <tr key={year} className="hover:bg-muted/30 transition-snap">
+                <td className="px-5 py-3 font-mono-data font-medium text-foreground">{year}</td>
+                <td className="px-5 py-3 text-right font-mono-data font-semibold text-foreground">
                   {formatValue(dp?.value ?? null, metric.unit)}
                 </td>
-                <td className="px-4 py-2.5 text-muted-foreground">
+                <td className="px-5 py-3 text-muted-foreground text-[12px]">
                   <HighlightText text={dp?.source ?? "—"} />
                 </td>
-                <td className="px-4 py-2.5">
-                  {dp?.value !== null ? (
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 bg-graduate-light text-graduate">
+                <td className="px-5 py-3">
+                  {dp?.value !== null && dp?.value !== undefined ? (
+                    <span className="text-[10px] font-medium px-2 py-0.5 bg-[hsl(150,50%,93%)] text-[hsl(150,50%,35%)] rounded">
                       VERIFIED
                     </span>
                   ) : (
-                    <span className="text-[10px] font-mono px-1.5 py-0.5 bg-warning-light text-warning-badge">
+                    <span className="text-[10px] font-medium px-2 py-0.5 bg-muted text-muted-foreground rounded">
                       {dp?.questionNote ? "CHANGED" : "MISSING"}
                     </span>
                   )}
