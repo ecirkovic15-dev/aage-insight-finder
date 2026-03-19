@@ -177,12 +177,12 @@ export const employerMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of employers citing competition for graduates as their top recruitment challenge.",
     dataPoints: [
-      { year: 2023, value: 73, source: "2023 AAGE Employer Survey", pageRef: "p13" },
+      { year: 2023, value: 73, source: "2023 AAGE Employer Survey", pageRef: "p57", questionNote: "Top challenge; followed by diversity targets (56%) and offer reneges (52%)" },
       { year: 2024, value: 48, source: "2024 AAGE Employer Survey", pageRef: "Executive Summary, p14" },
       { year: 2025, value: 40, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary, p14" },
-      { year: 2026, value: null, source: "2026 AAGE Employer Survey", questionNote: "In 2026, 'forecasting graduate role requirements' overtook competition (38%) as top challenge" },
+      { year: 2026, value: 33, source: "2026 AAGE Employer Survey", pageRef: "p71", questionNote: "Dropped to 33%; overtaken by forecasting (38%) as top challenge" },
     ],
-    consistencyNote: "In 2026, the question structure changed — 'forecasting graduate role requirements' (38%) became the top challenge, replacing 'competition for graduates'",
+    consistencyNote: "Declining from 73% (2023) → 33% (2026) as forecasting becomes the bigger challenge",
   },
   {
     id: "forecasting_challenge",
