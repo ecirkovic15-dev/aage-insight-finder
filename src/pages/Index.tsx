@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from "react";
-import { ReportType, Metric, employerMetrics, candidateMetrics } from "@/data/aageData";
+import { ReportType, Metric, employerMetrics, candidateMetrics, graduateMetrics, internMetrics } from "@/data/aageData";
 import { getAnecdotesForMetric } from "@/data/anecdotes";
 import { SearchProvider } from "@/context/SearchContext";
 import { Header } from "@/components/dashboard/Header";
