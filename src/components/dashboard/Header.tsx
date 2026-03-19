@@ -17,7 +17,6 @@ export function Header({ reportType, onReportTypeChange, onSelectMetric, searchI
   const fallbackRef = useRef<HTMLInputElement>(null);
   const inputRef = searchInputRef || fallbackRef;
   const containerRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const [showResults, setShowResults] = useState(false);
 
   // Show results when query changes and has results
