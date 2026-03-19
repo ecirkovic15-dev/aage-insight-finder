@@ -1,7 +1,7 @@
 // Client-side "smart search" — extracts keywords from natural language prompts
 // and scores metrics + anecdotes by relevance. No backend required.
 
-import { Metric, employerMetrics, candidateMetrics, ReportType } from "@/data/aageData";
+import { Metric, employerMetrics, candidateMetrics, graduateMetrics, internMetrics, ReportType } from "@/data/aageData";
 import { Anecdote, anecdotes } from "@/data/anecdotes";
 
 // ── Synonyms & concept mapping ──────────────────────────────────────────────
