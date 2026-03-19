@@ -107,10 +107,10 @@ const Index = () => {
                 </div>
 
                 {/* Confidentiality notice */}
-                <div className="bg-muted/60 border border-border rounded-lg px-5 py-3 flex items-center gap-3">
-                  <span className="text-muted-foreground text-sm">🔒</span>
-                  <p className="text-[11px] text-muted-foreground leading-relaxed">
-                    <span className="font-medium text-foreground">Internal Use Only</span> — This dashboard references AAGE industry partner survey reports. Data must not be shared externally or reproduced outside of Prosple.
+                <div className="rounded-lg px-5 py-3 flex items-center gap-3 border" style={{ backgroundColor: "hsl(0, 53%, 88%)", borderColor: "hsl(0, 40%, 82%)" }}>
+                  <span className="text-sm">🔒</span>
+                  <p className="text-[11px] leading-relaxed" style={{ color: "hsl(0, 40%, 35%)" }}>
+                    <span className="font-medium" style={{ color: "hsl(0, 40%, 30%)" }}>Internal Use Only</span> — This dashboard references AAGE industry partner survey reports. Data must not be shared externally or reproduced outside of Prosple.
                   </p>
                 </div>
 
