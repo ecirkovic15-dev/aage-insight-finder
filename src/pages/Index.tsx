@@ -166,13 +166,16 @@ const Index = () => {
                                 );
                               })}
                               <td className="px-4 py-2.5">
-                                <span className={`text-[10px] font-mono px-1.5 py-0.5 ${
-                                  available === 4
-                                    ? "bg-graduate-light text-graduate"
-                                    : available >= 2
-                                    ? "bg-employer-light text-employer"
-                                    : "text-[hsl(0,40%,45%)]"
-                                }`}>
+                                <span
+                                  className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                                    available === 4
+                                      ? "bg-graduate-light text-graduate"
+                                      : available >= 2
+                                      ? "bg-employer-light text-employer"
+                                      : ""
+                                  }`}
+                                  style={available < 2 ? { backgroundColor: "hsl(0, 53%, 88%)", color: "hsl(0, 40%, 45%)" } : undefined}
+                                >
                                   {available}/4 years
                                 </span>
                               </td>
