@@ -989,9 +989,9 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns completing their internship face-to-face on employer premises.",
     dataPoints: [
-      { year: 2023, value: 61, source: "2023 AAGE Intern Survey", pageRef: "p12", questionNote: "Three in five interns complete in person" },
+      { year: 2023, value: 61, source: "2023 AAGE Intern Survey", pageRef: "p34", questionNote: "Three in five interns complete in person; 37% hybrid, 2% remote" },
       { year: 2024, value: 73, source: "2024 AAGE Intern Survey", pageRef: "p12", questionNote: "Growing from 61% in 2023; 26% hybrid" },
-      { year: 2025, value: 80, source: "2025 AAGE Intern Survey", pageRef: "p11", questionNote: "Four in five interns completing face-to-face" },
+      { year: 2025, value: 80, source: "2025 AAGE Intern Survey", pageRef: "p34", questionNote: "Four in five face-to-face; 19% hybrid, 0.6% remote" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
