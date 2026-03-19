@@ -1059,12 +1059,12 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns who found working for their organisation was better than expected.",
     dataPoints: [
-      { year: 2023, value: 80, source: "2023 AAGE Intern Survey", pageRef: "p13", questionNote: "Rate how expectations met as excellent or very good" },
+      { year: 2023, value: 80, source: "2023 AAGE Intern Survey", pageRef: "p43", questionNote: "Rate how expectations met as excellent or very good" },
       { year: 2024, value: 93, source: "2024 AAGE Intern Survey", pageRef: "p12", questionNote: "Nine in ten found experience better than expected; 70% significantly/much better" },
-      { year: 2025, value: null, source: "2025 AAGE Intern Survey", questionNote: "Not directly stated as aggregate" },
+      { year: 2025, value: 72, source: "2025 AAGE Intern Survey", pageRef: "p42", questionNote: "35% significantly + 37% much better = 72% sig/much better; 94% including somewhat" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
-    consistencyNote: "Question framing differs between 2023 (rating scale) and 2024 (better/worse than expected)",
+    consistencyNote: "Question framing differs: 2023 (exc/VG rating), 2024-2025 (better/worse than expected). 2025 value uses significantly+much better for comparability with 2024.",
   },
   {
     id: "intern_paid",
