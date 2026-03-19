@@ -34,7 +34,12 @@ const Index = () => {
       <div className="h-screen flex flex-col bg-background">
         <WelcomeModal
           onSelectReport={(type) => { setReportType(type); setSelectedMetric(null); }}
-          onPrompt={() => { setTimeout(() => searchInputRef.current?.focus(), 100); }}
+          onPrompt={() => setSearchDialogOpen(true)}
+        />
+        <SearchDialog
+          open={searchDialogOpen}
+          onClose={() => setSearchDialogOpen(false)}
+          onSelectMetric={handleSelectMetric}
         />
         <Header
           reportType={reportType}
