@@ -615,8 +615,9 @@ export const graduateMetrics: Metric[] = [
       { year: 2023, value: 63, source: "2023 AAGE Graduate Survey", pageRef: "p14", questionNote: "Three in five; 33% considered but stayed, 5% decided to leave" },
       { year: 2024, value: 66, source: "2024 AAGE Graduate Survey", pageRef: "p13", questionNote: "Top 15: 79%" },
       { year: 2025, value: null, source: "2025 AAGE Graduate Survey", questionNote: "Not available" },
-      { year: 2026, value: null, source: "2026 AAGE Graduate Survey", questionNote: "Not reported in first 50 pages of summary report" },
+      { year: 2026, value: 83, source: "2026 AAGE Graduate Survey", pageRef: "p63", questionNote: "83% have not applied for other opportunities. Top 15: 93%. Note: question changed from 'considered leaving' to 'applied for other opportunities'" },
     ],
+    consistencyNote: "2023-2024 asked 'have you considered leaving'; 2026 asks 'have you applied for other opportunities' — not directly comparable",
   },
   {
     id: "grad_career_progression_retention",
