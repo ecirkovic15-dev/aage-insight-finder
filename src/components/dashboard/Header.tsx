@@ -47,7 +47,7 @@ export function Header({ reportType, onReportTypeChange, onSelectMetric, searchI
           AAGE Longitudinal Intelligence
         </h1>
         <span className="font-mono-data text-xs text-muted-foreground">2023–2026</span>
-        <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-destructive/10 text-destructive border border-destructive/20 uppercase tracking-wider">
+        <span className="text-[9px] font-mono px-1.5 py-0.5 rounded uppercase tracking-wider" style={{ backgroundColor: "hsl(0, 53%, 88%)", color: "hsl(0, 40%, 45%)" }}>
           Internal Only
         </span>
       </div>

@@ -47,7 +47,7 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
                 <HighlightText text={`"${dp.questionNote}"`} className="mt-1.5 text-[11px] text-muted-foreground italic leading-relaxed block" as="p" />
               )}
               {dp.value === null && (
-                <span className="inline-block mt-1.5 px-2 py-0.5 text-[10px] font-medium bg-muted text-muted-foreground rounded">
+                <span className="inline-block mt-1.5 px-2 py-0.5 text-[10px] font-medium rounded" style={{ backgroundColor: "hsl(0, 53%, 88%)", color: "hsl(0, 40%, 45%)" }}>
                   DATA NOT AVAILABLE
                 </span>
               )}
