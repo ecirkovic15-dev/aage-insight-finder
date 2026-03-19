@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,51 +7,51 @@
 
 @layer base {
   :root {
-    --background: 0 0% 99%;
-    --foreground: 222 47% 14%;
+    --background: 210 20% 97%;
+    --foreground: 220 61% 23%;
     --surface: 0 0% 100%;
-    --surface-foreground: 222 47% 14%;
+    --surface-foreground: 220 61% 23%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 14%;
+    --card-foreground: 220 61% 23%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 14%;
+    --popover-foreground: 220 61% 23%;
 
-    --primary: 222 47% 14%;
+    --primary: 219 94% 69%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 20% 96%;
-    --secondary-foreground: 222 47% 14%;
+    --secondary: 207 100% 90%;
+    --secondary-foreground: 220 61% 23%;
 
-    --muted: 220 15% 95%;
-    --muted-foreground: 218 13% 46%;
+    --muted: 210 15% 94%;
+    --muted-foreground: 218 13% 34%;
 
     --accent: 42 97% 65%;
-    --accent-foreground: 222 47% 14%;
+    --accent-foreground: 220 61% 23%;
 
     --destructive: 7 77% 54%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 220 10% 88%;
-    --input: 220 10% 88%;
-    --ring: 222 47% 14%;
+    --border: 0 0% 84%;
+    --input: 0 0% 84%;
+    --ring: 219 94% 69%;
 
-    --radius: 6px;
+    --radius: 8px;
 
-    /* AAGE Domain Colors */
-    --employer: 222 47% 14%;
-    --employer-light: 220 20% 96%;
+    /* AAGE Domain Colors — mapped to Prosple palette */
+    --employer: 219 94% 69%;
+    --employer-light: 207 100% 90%;
     --candidate: 42 97% 65%;
-    --candidate-light: 42 90% 94%;
+    --candidate-light: 42 90% 92%;
     --graduate: 150 50% 40%;
-    --graduate-light: 150 50% 92%;
+    --graduate-light: 150 50% 90%;
     --warning: 7 77% 54%;
-    --warning-light: 7 80% 95%;
+    --warning-light: 7 80% 94%;
     --success: 150 50% 40%;
 
-    /* Prosple brand */
-    --midnight: 222 47% 14%;
+    /* Prosple specific */
+    --midnight: 220 61% 23%;
     --slate: 218 13% 34%;
     --onahau: 207 100% 90%;
     --cornflower: 219 94% 69%;
@@ -58,20 +59,20 @@
     --poppy: 7 77% 54%;
 
     /* Functional */
-    --chart-1: 222 47% 14%;
+    --chart-1: 219 94% 69%;
     --chart-2: 42 97% 65%;
     --chart-3: 150 50% 40%;
-    --chart-4: 219 94% 69%;
+    --chart-4: 280 45% 55%;
     --chart-5: 7 77% 54%;
 
-    --sidebar-background: 222 47% 14%;
-    --sidebar-foreground: 220 20% 80%;
-    --sidebar-primary: 0 0% 100%;
-    --sidebar-primary-foreground: 222 47% 14%;
-    --sidebar-accent: 222 35% 22%;
+    --sidebar-background: 220 61% 23%;
+    --sidebar-foreground: 207 100% 90%;
+    --sidebar-primary: 219 94% 69%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 50% 30%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 222 30% 24%;
-    --sidebar-ring: 42 97% 65%;
+    --sidebar-border: 220 40% 32%;
+    --sidebar-ring: 219 94% 69%;
   }
 }
 
@@ -82,30 +83,16 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
   }
-  h1, h2, h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    letter-spacing: -0.02em;
-    font-weight: 500;
-  }
-  h4, h5, h6 {
-    font-weight: 600;
+  h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.01em;
+    font-weight: 600;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: 'Playfair Display', Georgia, serif;
-  }
   .font-mono-data {
     font-family: 'Geist Mono', ui-monospace, monospace;
     font-variant-numeric: tabular-nums;
-  }
-  .rule-top {
-    border-top: 2px solid hsl(var(--foreground));
-  }
-  .rule-bottom {
-    border-bottom: 2px solid hsl(var(--foreground));
   }
   .text-employer {
     color: hsl(var(--employer));
@@ -144,10 +131,7 @@
     border-color: hsl(var(--employer));
   }
   .shadow-tight {
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  }
-  .shadow-card {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(24, 48, 94, 0.08);
   }
   .transition-snap {
     transition: all 150ms cubic-bezier(0.2, 0, 0, 1);

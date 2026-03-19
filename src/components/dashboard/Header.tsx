@@ -1,5 +1,4 @@
 import { ReportType } from "@/data/aageData";
-import prospleLogo from "@/assets/prosple-logo.jpg";
 
 interface HeaderProps {
   reportType: ReportType;
@@ -13,36 +12,29 @@ export function Header({ reportType, onReportTypeChange }: HeaderProps) {
   ];
 
   return (
-    <header className="bg-surface shrink-0">
-      <div className="flex items-center justify-between px-8 py-4">
-        <div className="flex items-center gap-6">
-          <img src={prospleLogo} alt="Prosple" className="h-7 w-auto" />
-          <div className="h-5 w-px bg-border" />
-          <h1 className="font-display text-lg font-medium text-foreground italic">
-            Top 100 Graduate Employers™
-          </h1>
-          <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.15em]">
-            Longitudinal Intelligence · 2023–2026
-          </span>
-        </div>
-
-        <div className="flex items-center gap-1">
-          {types.map((t) => (
-            <button
-              key={t.key}
-              onClick={() => onReportTypeChange(t.key)}
-              className={`px-5 py-2 text-xs font-semibold uppercase tracking-wider transition-snap ${
-                reportType === t.key
-                  ? "bg-foreground text-primary-foreground"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
-        </div>
+    <header className="h-14 bg-midnight flex items-center justify-between px-6 shrink-0">
+      <div className="flex items-center gap-4">
+        <h1 className="text-sm font-semibold tracking-tight text-primary-foreground">
+          AAGE Longitudinal Intelligence
+        </h1>
+        <span className="font-mono-data text-xs text-primary-foreground/60">2023–2026</span>
       </div>
-      <div className="rule-top mx-8" />
+
+      <div className="flex items-center gap-1 bg-sidebar-accent rounded-lg p-1">
+        {types.map((t) => (
+          <button
+            key={t.key}
+            onClick={() => onReportTypeChange(t.key)}
+            className={`px-4 py-1.5 text-xs font-medium rounded-md transition-snap ${
+              reportType === t.key
+                ? "bg-primary text-primary-foreground shadow-tight"
+                : "text-primary-foreground/70 hover:text-primary-foreground"
+            }`}
+          >
+            {t.label}
+          </button>
+        ))}
+      </div>
     </header>
   );
 }

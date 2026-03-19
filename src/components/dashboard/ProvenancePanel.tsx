@@ -19,11 +19,10 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: 0.1 }}
-      className="bg-surface"
+      className="bg-surface border border-border rounded-lg"
     >
-      <div className="rule-top mx-0" />
-      <div className="px-5 py-4">
-        <h3 className="text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.12em]">
+      <div className="px-4 py-3 border-b border-border">
+        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
           Question Provenance
         </h3>
       </div>
@@ -32,9 +31,9 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
           const dp = metric.dataPoints.find((d) => d.year === year);
           if (!dp) return null;
           return (
-            <div key={year} className="px-5 py-3">
+            <div key={year} className="px-4 py-3">
               <div className="flex items-baseline justify-between">
-                <span className="font-display text-base font-medium">{year}</span>
+                <span className="font-mono-data text-sm font-medium">{year}</span>
                 <span className="font-mono-data text-sm font-semibold">
                   {formatValue(dp.value, metric.unit)}
                 </span>
@@ -51,7 +50,7 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
                 </p>
               )}
               {dp.value === null && (
-                <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge rounded-sm">
+                <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge rounded">
                   DATA NOT AVAILABLE
                 </span>
               )}

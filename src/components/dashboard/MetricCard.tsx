@@ -28,24 +28,24 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
     <motion.button
       layout
       onClick={onClick}
-      className={`w-full text-left p-5 bg-surface border-t-2 transition-snap ${
+      className={`w-full text-left p-4 bg-surface rounded-lg border transition-snap ${
         isSelected
-          ? "border-t-foreground shadow-card"
-          : "border-t-border hover:border-t-foreground/30 hover:shadow-tight"
+          ? "border-primary shadow-tight ring-2 ring-primary/20"
+          : "border-border hover:border-primary/40 hover:shadow-tight"
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <p className="text-xs text-muted-foreground leading-tight font-medium">{metric.label}</p>
+        <p className="text-xs text-muted-foreground leading-tight">{metric.label}</p>
         {metric.isNewQuestion && (
           <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-mono bg-warning-light text-warning-badge rounded">
             Δ {metric.yearIntroduced}
           </span>
         )}
       </div>
-      <div className="mt-3 flex items-baseline gap-2">
+      <div className="mt-2 flex items-baseline gap-2">
         {latestPoint?.value ? (
           <>
-            <span className="font-display text-2xl font-medium text-foreground">
+            <span className="font-mono-data text-xl font-semibold text-foreground">
               {formatValue(latestPoint.value, metric.unit)}
             </span>
             {changePercent !== null && (
@@ -63,11 +63,11 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
           <span className="font-mono-data text-sm text-muted-foreground">—</span>
         )}
       </div>
-      <p className="mt-2 font-mono-data text-[10px] text-muted-foreground">
+      <p className="mt-1 font-mono-data text-[10px] text-muted-foreground">
         {latestPoint ? `${latestPoint.year} · ${latestPoint.source}` : "No data"}
       </p>
       {metric.consistencyNote && (
-        <p className="mt-1.5 text-[10px] text-warning-badge leading-tight">
+        <p className="mt-1 text-[10px] text-warning-badge leading-tight">
           ⚠ {metric.consistencyNote}
         </p>
       )}

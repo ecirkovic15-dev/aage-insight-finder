@@ -31,14 +31,14 @@ const Index = () => {
           onSelectMetric={handleSelectMetric}
         />
 
-        <main className="flex-1 overflow-y-auto p-8">
+        <main className="flex-1 overflow-y-auto p-6">
           {!selectedMetric ? (
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
-                <h2 className="font-display text-2xl text-foreground">
+                <h2 className="text-lg font-medium">
                   {reportType === "employer" ? "Employer Survey" : "Candidate Survey"} Overview
                 </h2>
-                <p className="text-sm text-muted-foreground mt-2 max-w-[60ch] leading-relaxed">
+                <p className="text-xs text-muted-foreground mt-1">
                   Select a metric below or from the sidebar to explore trends. All data sourced
                   directly from AAGE PDF reports.
                 </p>
@@ -51,21 +51,21 @@ const Index = () => {
               />
 
               {/* Legend */}
-              <div className="rule-top pt-5">
-                <h3 className="text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.12em] mb-4">
+              <div className="bg-surface border border-border rounded-lg p-4">
+                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   Data Integrity Legend
                 </h3>
-                <div className="flex flex-wrap gap-5 text-[11px]">
+                <div className="flex flex-wrap gap-4 text-[11px]">
                   <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-foreground" />
+                    <span className="w-3 h-3 bg-employer" />
                     <span>Employer data</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="w-3 h-3 bg-accent" />
+                    <span className="w-3 h-3 bg-candidate" />
                     <span>Candidate data</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge rounded-sm">Δ</span>
+                    <span className="px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge">Δ</span>
                     <span>New or changed question</span>
                   </div>
                   <div className="flex items-center gap-2">
@@ -73,30 +73,29 @@ const Index = () => {
                     <span>Partial data (gaps in years)</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="px-1.5 py-0.5 text-[9px] font-mono bg-graduate-light text-graduate rounded-sm">VERIFIED</span>
+                    <span className="px-1.5 py-0.5 text-[9px] font-mono bg-graduate-light text-graduate">VERIFIED</span>
                     <span>Data confirmed from PDF source</span>
                   </div>
                 </div>
               </div>
 
-              {/* Data Dictionary */}
-              <div className="bg-surface">
-                <div className="rule-top" />
-                <div className="px-5 py-4">
-                  <h3 className="text-[11px] font-semibold text-muted-foreground uppercase tracking-[0.12em]">
+              {/* All metrics as a reference table */}
+              <div className="bg-surface border border-border rounded-lg overflow-hidden">
+                <div className="px-4 py-3 border-b border-border">
+                  <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                     All {reportType === "employer" ? "Employer" : "Candidate"} Metrics — Data Dictionary
                   </h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs">
                     <thead>
-                      <tr className="border-b-2 border-foreground text-left">
-                        <th className="px-5 py-2.5 font-semibold text-foreground">Metric</th>
-                        <th className="px-4 py-2.5 font-mono text-foreground text-center">2023</th>
-                        <th className="px-4 py-2.5 font-mono text-foreground text-center">2024</th>
-                        <th className="px-4 py-2.5 font-mono text-foreground text-center">2025</th>
-                        <th className="px-4 py-2.5 font-mono text-foreground text-center">2026</th>
-                        <th className="px-4 py-2.5 font-semibold text-foreground">Status</th>
+                      <tr className="border-b border-border text-left">
+                        <th className="px-4 py-2 font-mono text-muted-foreground">Metric</th>
+                        <th className="px-4 py-2 font-mono text-muted-foreground text-center">2023</th>
+                        <th className="px-4 py-2 font-mono text-muted-foreground text-center">2024</th>
+                        <th className="px-4 py-2 font-mono text-muted-foreground text-center">2025</th>
+                        <th className="px-4 py-2 font-mono text-muted-foreground text-center">2026</th>
+                        <th className="px-4 py-2 font-mono text-muted-foreground">Status</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-border">
@@ -108,10 +107,10 @@ const Index = () => {
                             className="hover:bg-muted/50 transition-snap cursor-pointer"
                             onClick={() => handleSelectMetric(m)}
                           >
-                            <td className="px-5 py-3">
+                            <td className="px-4 py-2.5">
                               <span className="font-medium">{m.label}</span>
                               {m.isNewQuestion && (
-                                <span className="ml-2 text-[9px] font-mono px-1.5 py-0.5 bg-warning-light text-warning-badge rounded-sm">
+                                <span className="ml-2 text-[9px] font-mono px-1 py-0.5 bg-warning-light text-warning-badge">
                                   NEW {m.yearIntroduced}
                                 </span>
                               )}
@@ -120,7 +119,7 @@ const Index = () => {
                               const dp = m.dataPoints.find((d) => d.year === yr);
                               const val = dp?.value;
                               return (
-                                <td key={yr} className="px-4 py-3 text-center font-mono-data">
+                                <td key={yr} className="px-4 py-2.5 text-center font-mono-data">
                                   {val !== null && val !== undefined ? (
                                     m.unit === "$" ? `$${val.toLocaleString()}` :
                                     m.unit === "%" ? `${val}%` :
@@ -131,12 +130,12 @@ const Index = () => {
                                 </td>
                               );
                             })}
-                            <td className="px-4 py-3">
-                              <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded-sm ${
+                            <td className="px-4 py-2.5">
+                              <span className={`text-[10px] font-mono px-1.5 py-0.5 ${
                                 available === 4
                                   ? "bg-graduate-light text-graduate"
                                   : available >= 2
-                                  ? "bg-employer-light text-foreground"
+                                  ? "bg-employer-light text-employer"
                                   : "bg-warning-light text-warning-badge"
                               }`}>
                                 {available}/4 years
@@ -151,17 +150,17 @@ const Index = () => {
               </div>
             </div>
           ) : (
-            <div className="space-y-8">
+            <div className="space-y-6">
               <button
                 onClick={() => setSelectedMetric(null)}
-                className="text-xs text-muted-foreground hover:text-foreground transition-snap flex items-center gap-1 font-medium"
+                className="text-xs text-muted-foreground hover:text-foreground transition-snap flex items-center gap-1"
               >
                 ← Back to overview
               </button>
 
               <TrendChart metric={selectedMetric} />
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <ProvenancePanel metric={selectedMetric} />
                 <DataTable metric={selectedMetric} />
               </div>
