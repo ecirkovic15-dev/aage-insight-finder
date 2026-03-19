@@ -975,9 +975,9 @@ export const internMetrics: Metric[] = [
     unit: "score",
     description: "Net Engagement Score measuring how engaged interns feel with their role and organisation.",
     dataPoints: [
-      { year: 2023, value: 48, source: "2023 AAGE Intern Survey", pageRef: "p13", questionNote: "58% gave a score of 9 or 10" },
+      { year: 2023, value: 48, source: "2023 AAGE Intern Survey", pageRef: "p59", questionNote: "58% gave 9-10; 32% gave 7-8; 10% gave 0-6" },
       { year: 2024, value: null, source: "2024 AAGE Intern Survey", questionNote: "Not stated in executive summary" },
-      { year: 2025, value: 63, source: "2025 AAGE Intern Survey", pageRef: "p14", questionNote: "High degree of engagement and connection" },
+      { year: 2025, value: 63, source: "2025 AAGE Intern Survey", pageRef: "p46", questionNote: "68% gave 9-10; 28% gave 7-8; 4% gave 0-6" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
