@@ -271,10 +271,10 @@ export const employerMetrics: Metric[] = [
     dataPoints: [
       { year: 2023, value: 77, source: "2023 AAGE Employer Survey", pageRef: "p41" },
       { year: 2024, value: 82, source: "2024 AAGE Employer Survey", pageRef: "p43" },
-      { year: 2025, value: 77, source: "2025 AAGE Employer Survey", pageRef: "p50" },
-      { year: 2026, value: null, source: "2026 AAGE Employer Survey", questionNote: "Reported as 56%+ assessing as important — different framing" },
+      { year: 2025, value: 82, source: "2025 AAGE Employer Survey", pageRef: "p51", questionNote: "Assessed and very important" },
+      { year: 2026, value: 75, source: "2026 AAGE Employer Survey", pageRef: "p54", questionNote: "75% assessed and very important; 24% quite important = 99% total" },
     ],
-    consistencyNote: "2026 changed the assessment framework slightly",
+    consistencyNote: "Consistent question format across all years. Communication skills remain most assessed.",
   },
 ];
 
