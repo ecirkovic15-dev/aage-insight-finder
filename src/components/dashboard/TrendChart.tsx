@@ -34,47 +34,49 @@ export function TrendChart({ metric }: TrendChartProps) {
     return val.toLocaleString();
   };
 
-  // Prosple brand colors
-  const barColor = metric.reportType === "employer" ? "hsl(219, 94%, 69%)" : "hsl(42, 97%, 65%)";
-  const barColorMuted = metric.reportType === "employer" ? "hsl(219, 50%, 85%)" : "hsl(42, 50%, 85%)";
+  // Near-black for employer, sandy gold for candidate
+  const barColor = metric.reportType === "employer" ? "hsl(222, 47%, 14%)" : "hsl(42, 97%, 65%)";
+  const barColorMuted = metric.reportType === "employer" ? "hsl(222, 20%, 80%)" : "hsl(42, 50%, 85%)";
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="bg-surface border border-border rounded-lg p-6"
+      className="bg-surface p-8"
     >
-      <div className="flex items-start justify-between mb-1">
-        <div>
-          <h2 className="text-base font-semibold text-foreground">{metric.label}</h2>
-          <p className="text-xs text-muted-foreground mt-1 max-w-[65ch]">{metric.description}</p>
+      <div className="rule-top pt-6 mb-1">
+        <div className="flex items-start justify-between">
+          <div>
+            <h2 className="font-display text-xl text-foreground">{metric.label}</h2>
+            <p className="text-xs text-muted-foreground mt-2 max-w-[65ch] leading-relaxed">{metric.description}</p>
+          </div>
+          <span
+            className={`px-3 py-1 text-[10px] font-semibold uppercase tracking-wider ${
+              metric.reportType === "employer"
+                ? "bg-foreground text-primary-foreground"
+                : "bg-accent text-accent-foreground"
+            }`}
+          >
+            {metric.reportType}
+          </span>
         </div>
-        <span
-          className={`px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider rounded-full ${
-            metric.reportType === "employer"
-              ? "bg-employer-light text-employer"
-              : "bg-candidate-light text-candidate"
-          }`}
-        >
-          {metric.reportType}
-        </span>
       </div>
 
       {metric.consistencyNote && (
-        <div className="mt-2 px-3 py-2 bg-warning-light border border-destructive/20 text-[11px] text-warning-badge font-mono rounded-md">
+        <div className="mt-3 px-3 py-2 bg-warning-light text-[11px] text-warning-badge font-mono rounded-sm">
           ⚠ {metric.consistencyNote}
         </div>
       )}
 
-      <div className="mt-6 h-[280px]">
+      <div className="mt-8 h-[280px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="1 3" stroke="hsl(0, 0%, 84%)" vertical={false} />
+            <CartesianGrid strokeDasharray="1 3" stroke="hsl(220, 10%, 90%)" vertical={false} />
             <XAxis
               dataKey="year"
-              tick={{ fontSize: 12, fontFamily: "Poppins, sans-serif" }}
-              axisLine={{ stroke: "hsl(0, 0%, 84%)" }}
+              tick={{ fontSize: 12, fontFamily: "Poppins, sans-serif", fontWeight: 500 }}
+              axisLine={{ stroke: "hsl(222, 47%, 14%)" }}
               tickLine={false}
             />
             <YAxis
@@ -90,12 +92,12 @@ export function TrendChart({ metric }: TrendChartProps) {
               domain={[0, "auto"]}
             />
             <Tooltip
-              cursor={{ fill: "hsl(210, 15%, 94%)" }}
+              cursor={{ fill: "hsl(220, 15%, 96%)" }}
               content={({ active, payload }) => {
                 if (!active || !payload?.[0]) return null;
                 const d = payload[0].payload;
                 return (
-                  <div className="bg-surface border border-border p-3 shadow-tight rounded-lg text-xs">
+                  <div className="bg-surface border border-border p-3 shadow-card rounded-md text-xs">
                     <p className="font-mono-data font-semibold">
                       {d.year}: {d.value !== null ? formatValue(d.value) : "No data"}
                     </p>
@@ -107,7 +109,7 @@ export function TrendChart({ metric }: TrendChartProps) {
                 );
               }}
             />
-            <Bar dataKey="value" maxBarSize={60} radius={[4, 4, 0, 0]}>
+            <Bar dataKey="value" maxBarSize={56} radius={[2, 2, 0, 0]}>
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
