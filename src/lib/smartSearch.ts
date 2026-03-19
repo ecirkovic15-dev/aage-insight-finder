@@ -53,6 +53,7 @@ export interface SearchResult {
   metric?: Metric;
   anecdote?: Anecdote;
   matchedKeywords: string[];
+  reportType?: ReportType;
 }
 
 /** Extract meaningful keywords from a natural language prompt */
