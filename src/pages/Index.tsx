@@ -29,7 +29,16 @@ const Index = () => {
   return (
     <SearchProvider reportType={reportType}>
       <div className="h-screen flex flex-col bg-background">
-        <Header reportType={reportType} onReportTypeChange={handleReportTypeChange} onSelectMetric={handleSelectMetric} />
+        <WelcomeModal
+          onBrowse={() => {}}
+          onPrompt={() => { setTimeout(() => searchInputRef.current?.focus(), 100); }}
+        />
+        <Header
+          reportType={reportType}
+          onReportTypeChange={handleReportTypeChange}
+          onSelectMetric={handleSelectMetric}
+          searchInputRef={searchInputRef}
+        />
 
         <div className="flex flex-1 overflow-hidden">
           <Sidebar
