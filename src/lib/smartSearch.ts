@@ -42,6 +42,7 @@ const STOP_WORDS = new Set([
   "such","only","own","same","other","new","old","like","want","wants","need",
   "needs","tell","telling","told","ask","asking","asked","know","knows","talk",
   "talking","client","clients","rep","reps","sales","customer","customers",
+  "per","its","get","got","many","much","well","way",
 ]);
 
 export interface SearchResult {
