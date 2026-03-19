@@ -222,10 +222,10 @@ export const employerMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of employers offering a formal graduate development program.",
     dataPoints: [
-      { year: 2023, value: null, source: "2023 AAGE Employer Survey", questionNote: "Referenced but specific % not in first 50 pages" },
+      { year: 2023, value: 95, source: "2023 AAGE Employer Survey", pageRef: "p67", questionNote: "79% org-wide + 16% business-unit specific = 95% total" },
       { year: 2024, value: 91, source: "2024 AAGE Employer Survey", pageRef: "Executive Summary, p15" },
       { year: 2025, value: 91, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary, p15" },
-      { year: 2026, value: null, source: "2026 AAGE Employer Survey", questionNote: "Not in summary pages extracted" },
+      { year: 2026, value: 93, source: "2026 AAGE Employer Survey", pageRef: "p94", questionNote: "81% org-wide + 12% business-unit specific = 93%" },
     ],
   },
   {
