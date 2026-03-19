@@ -1,16 +1,37 @@
-import { ReportType } from "@/data/aageData";
+import { ReportType, Metric } from "@/data/aageData";
 import { useSearch } from "@/context/SearchContext";
-import { Search, X } from "lucide-react";
-import { useRef } from "react";
+import { SearchResultsPanel } from "./SearchResultsPanel";
+import { Search, X, MessageSquareText } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
 
 interface HeaderProps {
   reportType: ReportType;
   onReportTypeChange: (type: ReportType) => void;
+  onSelectMetric: (metric: Metric) => void;
 }
 
-export function Header({ reportType, onReportTypeChange }: HeaderProps) {
-  const { query, setQuery, matchCount } = useSearch();
+export function Header({ reportType, onReportTypeChange, onSelectMetric }: HeaderProps) {
+  const { query, setQuery, results } = useSearch();
   const inputRef = useRef<HTMLInputElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [showResults, setShowResults] = useState(false);
+
+  // Show results when query changes and has results
+  useEffect(() => {
+    setShowResults(query.length >= 3 && results.length > 0);
+  }, [query, results]);
+
+  // Close on click outside
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setShowResults(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
 
   const types: { key: ReportType; label: string }[] = [
     { key: "employer", label: "Employer" },
@@ -26,34 +47,45 @@ export function Header({ reportType, onReportTypeChange }: HeaderProps) {
         <span className="font-mono-data text-xs text-primary-foreground/60">2023–2026</span>
       </div>
 
-      {/* Search */}
       <div className="flex items-center gap-3">
-        <div className="relative flex items-center">
-          <Search className="absolute left-2.5 w-3.5 h-3.5 text-primary-foreground/40 pointer-events-none" />
+        {/* Conversational prompt input */}
+        <div ref={containerRef} className="relative flex items-center">
+          <MessageSquareText className="absolute left-2.5 w-3.5 h-3.5 text-primary-foreground/40 pointer-events-none" />
           <input
             ref={inputRef}
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search metrics, anecdotes…"
-            className="h-8 w-56 pl-8 pr-8 rounded-md bg-sidebar-accent text-xs text-primary-foreground placeholder:text-primary-foreground/40 border border-sidebar-border focus:outline-none focus:ring-1 focus:ring-primary transition-snap"
+            onFocus={() => { if (query.length >= 3 && results.length > 0) setShowResults(true); }}
+            placeholder="Ask about trends, e.g. &quot;client asking about AI&quot;…"
+            className="h-8 w-80 pl-8 pr-8 rounded-md bg-sidebar-accent text-xs text-primary-foreground placeholder:text-primary-foreground/40 border border-sidebar-border focus:outline-none focus:ring-1 focus:ring-accent transition-snap"
           />
           {query && (
             <button
-              onClick={() => { setQuery(""); inputRef.current?.focus(); }}
+              onClick={() => { setQuery(""); setShowResults(false); inputRef.current?.focus(); }}
               className="absolute right-2 text-primary-foreground/50 hover:text-primary-foreground"
             >
               <X className="w-3.5 h-3.5" />
             </button>
           )}
-          {query.length >= 2 && (
-            <span className="absolute -right-14 text-[10px] font-mono-data text-primary-foreground/60 whitespace-nowrap">
-              {matchCount} hit{matchCount !== 1 ? "s" : ""}
+          {query.length >= 3 && (
+            <span className="absolute -right-16 text-[10px] font-mono-data text-primary-foreground/60 whitespace-nowrap">
+              {results.length} match{results.length !== 1 ? "es" : ""}
             </span>
           )}
+
+          <AnimatePresence>
+            {showResults && (
+              <SearchResultsPanel
+                results={results}
+                onSelectMetric={onSelectMetric}
+                onClose={() => setShowResults(false)}
+              />
+            )}
+          </AnimatePresence>
         </div>
 
-        <div className="flex items-center gap-1 bg-sidebar-accent rounded-lg p-1 ml-10">
+        <div className="flex items-center gap-1 bg-sidebar-accent rounded-lg p-1 ml-14">
           {types.map((t) => (
             <button
               key={t.key}
