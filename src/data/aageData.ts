@@ -961,9 +961,9 @@ export const internMetrics: Metric[] = [
     unit: "score",
     description: "Net Promoter Score measuring how likely interns are to recommend their internship experience.",
     dataPoints: [
-      { year: 2023, value: 57, source: "2023 AAGE Intern Survey", pageRef: "p13", questionNote: "Consistent with NPS of 55 in 2022" },
+      { year: 2023, value: 57, source: "2023 AAGE Intern Survey", pageRef: "p57", questionNote: "Consistent with NPS of 55 in 2022; 66% promoters, 25% passives, 9% detractors" },
       { year: 2024, value: null, source: "2024 AAGE Intern Survey", questionNote: "Not stated in executive summary" },
-      { year: 2025, value: 68, source: "2025 AAGE Intern Survey", pageRef: "p14", questionNote: "73% are promoters" },
+      { year: 2025, value: 68, source: "2025 AAGE Intern Survey", pageRef: "p45", questionNote: "73% promoters, 22% passives, 5% detractors" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
