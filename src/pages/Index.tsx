@@ -11,6 +11,7 @@ import { DataTable } from "@/components/dashboard/DataTable";
 import { AnecdoteCard } from "@/components/dashboard/AnecdoteCard";
 import { HighlightText } from "@/components/dashboard/HighlightText";
 import { WelcomeModal } from "@/components/dashboard/WelcomeModal";
+import { SearchDialog } from "@/components/dashboard/SearchDialog";
 
 const Index = () => {
   const [reportType, setReportType] = useState<ReportType>("employer");
