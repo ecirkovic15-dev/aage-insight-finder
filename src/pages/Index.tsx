@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useCallback } from "react";
 import { ReportType, Metric, employerMetrics, candidateMetrics } from "@/data/aageData";
 import { getAnecdotesForMetric } from "@/data/anecdotes";
 import { SearchProvider } from "@/context/SearchContext";
@@ -10,10 +10,12 @@ import { ProvenancePanel } from "@/components/dashboard/ProvenancePanel";
 import { DataTable } from "@/components/dashboard/DataTable";
 import { AnecdoteCard } from "@/components/dashboard/AnecdoteCard";
 import { HighlightText } from "@/components/dashboard/HighlightText";
+import { WelcomeModal } from "@/components/dashboard/WelcomeModal";
 
 const Index = () => {
   const [reportType, setReportType] = useState<ReportType>("employer");
   const [selectedMetric, setSelectedMetric] = useState<Metric | null>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleReportTypeChange = (type: ReportType) => {
     setReportType(type);
