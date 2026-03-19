@@ -472,9 +472,9 @@ export const graduateMetrics: Metric[] = [
       { year: 2023, value: 41, source: "2023 AAGE Graduate Survey", pageRef: "p14", questionNote: "Top Ten employer NPS is 84" },
       { year: 2024, value: 35, source: "2024 AAGE Graduate Survey", pageRef: "p14", questionNote: "Dropped from 41 in 2023 and 47 in 2022. Top 15 employer NPS: 75% promoters" },
       { year: 2025, value: null, source: "2025 AAGE Graduate Survey", questionNote: "2025 full report not available" },
-      { year: 2026, value: null, source: "2026 AAGE Graduate Survey", questionNote: "Not reported in first 50 pages of summary report" },
+      { year: 2026, value: 42, source: "2026 AAGE Graduate Survey", pageRef: "p73", questionNote: "55% Promoters, 32% Passives, 13% Detractors. Top 15 NPS: 74 (79% promoters)" },
     ],
-    consistencyNote: "NPS trending downward from 47 (2022) → 41 (2023) → 35 (2024)",
+    consistencyNote: "NPS: 47 (2022) → 41 (2023) → 35 (2024) → 42 (2026). Rebounded in 2026.",
   },
   {
     id: "grad_nes",
