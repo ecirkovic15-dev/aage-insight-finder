@@ -97,15 +97,11 @@ const Index = () => {
                 </div>
 
                 {/* Confidentiality notice */}
-                <div className="bg-poppy/5 border border-poppy/20 rounded-lg px-4 py-3 flex items-start gap-3">
-                  <span className="text-poppy text-sm mt-0.5">🔒</span>
-                  <div>
-                    <p className="text-[11px] font-medium text-foreground">Confidential — Internal Use Only</p>
-                    <p className="text-[10px] text-muted-foreground mt-0.5 leading-relaxed">
-                      This dashboard references AAGE industry partner survey reports. All data is proprietary and must not be shared externally, 
-                      reproduced, or distributed outside of Prosple. This tool exists solely to make report content accessible faster for internal teams.
-                    </p>
-                  </div>
+                <div className="bg-muted/60 border border-border rounded-lg px-5 py-3 flex items-center gap-3">
+                  <span className="text-muted-foreground text-sm">🔒</span>
+                  <p className="text-[11px] text-muted-foreground leading-relaxed">
+                    <span className="font-medium text-foreground">Internal Use Only</span> — This dashboard references AAGE industry partner survey reports. Data must not be shared externally or reproduced outside of Prosple.
+                  </p>
                 </div>
 
                 {/* All metrics as a reference table */}
