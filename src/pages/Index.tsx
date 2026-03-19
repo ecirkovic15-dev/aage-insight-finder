@@ -99,7 +99,7 @@ const Index = () => {
                 <div className="bg-surface border border-border rounded-lg overflow-hidden">
                   <div className="px-4 py-3 border-b border-border">
                     <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
-                      All {reportType === "employer" ? "Employer" : "Candidate"} Metrics — Data Dictionary
+                      All {{ employer: "Employer", candidate: "Candidate", graduate: "Graduate", intern: "Intern" }[reportType]} Metrics — Data Dictionary
                     </h3>
                   </div>
                   <div className="overflow-x-auto">
