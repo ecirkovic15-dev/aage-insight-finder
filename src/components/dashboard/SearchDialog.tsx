@@ -1,9 +1,8 @@
-import { useRef, useEffect } from "react";
-import { useSearch } from "@/context/SearchContext";
+import { useRef, useEffect, useState, useMemo } from "react";
+import { smartSearch, SearchResult } from "@/lib/smartSearch";
 import { Metric, ReportType } from "@/data/aageData";
 import { MessageSquareText, X, Search, BarChart3, MessageSquareQuote, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SearchResult } from "@/lib/smartSearch";
 import { employerMetrics, candidateMetrics, graduateMetrics, internMetrics } from "@/data/aageData";
 
 const REPORT_LABELS: Record<ReportType, string> = {
