@@ -1,5 +1,6 @@
 import { Metric } from "@/data/aageData";
 import { motion } from "framer-motion";
+import { HighlightText } from "./HighlightText";
 
 interface MetricCardProps {
   metric: Metric;
@@ -35,7 +36,7 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <p className="text-xs text-muted-foreground leading-tight">{metric.label}</p>
+        <HighlightText text={metric.label} className="text-xs text-muted-foreground leading-tight" as="p" />
         {metric.isNewQuestion && (
           <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-mono bg-warning-light text-warning-badge rounded">
             Δ {metric.yearIntroduced}
@@ -67,9 +68,11 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
         {latestPoint ? `${latestPoint.year} · ${latestPoint.source}` : "No data"}
       </p>
       {metric.consistencyNote && (
-        <p className="mt-1 text-[10px] text-warning-badge leading-tight">
-          ⚠ {metric.consistencyNote}
-        </p>
+        <HighlightText
+          text={`⚠ ${metric.consistencyNote}`}
+          className="mt-1 text-[10px] text-warning-badge leading-tight block"
+          as="p"
+        />
       )}
     </motion.button>
   );

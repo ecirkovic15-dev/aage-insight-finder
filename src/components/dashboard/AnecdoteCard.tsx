@@ -1,6 +1,7 @@
 import { Anecdote } from "@/data/anecdotes";
 import { motion } from "framer-motion";
 import { MessageSquareQuote, Star } from "lucide-react";
+import { HighlightText } from "./HighlightText";
 
 interface AnecdoteCardProps {
   anecdote: Anecdote;
@@ -19,7 +20,7 @@ export function AnecdoteCard({ anecdote, index = 0 }: AnecdoteCardProps) {
       <div className="px-4 py-3 border-b border-border flex items-start justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
           <MessageSquareQuote className="w-3.5 h-3.5 text-accent shrink-0" />
-          <h4 className="text-xs font-semibold truncate">{anecdote.title}</h4>
+          <HighlightText text={anecdote.title} className="text-xs font-semibold truncate" as="h4" />
         </div>
         {anecdote.featured && (
           <span className="shrink-0 flex items-center gap-1 px-1.5 py-0.5 text-[9px] font-mono bg-accent/20 text-accent rounded">
@@ -32,7 +33,7 @@ export function AnecdoteCard({ anecdote, index = 0 }: AnecdoteCardProps) {
       {/* Quote */}
       <div className="px-4 py-3 bg-muted/30">
         <blockquote className="text-[11px] leading-relaxed italic text-foreground/90 border-l-2 border-accent pl-3">
-          "{anecdote.quote}"
+          "<HighlightText text={anecdote.quote} />"
         </blockquote>
       </div>
 
@@ -40,19 +41,17 @@ export function AnecdoteCard({ anecdote, index = 0 }: AnecdoteCardProps) {
       <div className="px-4 py-3 space-y-2">
         <div>
           <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">Context</span>
-          <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">{anecdote.context}</p>
+          <HighlightText text={anecdote.context} className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed block" as="p" />
         </div>
         <div>
           <span className="text-[9px] font-mono text-muted-foreground uppercase tracking-wider">Why it matters</span>
-          <p className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed">{anecdote.relevance}</p>
+          <HighlightText text={anecdote.relevance} className="text-[11px] text-muted-foreground mt-0.5 leading-relaxed block" as="p" />
         </div>
       </div>
 
       {/* Source */}
       <div className="px-4 py-2 border-t border-border bg-muted/20 flex items-center justify-between">
-        <span className="text-[10px] font-mono text-muted-foreground">
-          📋 {anecdote.source.meeting}
-        </span>
+        <HighlightText text={`📋 ${anecdote.source.meeting}`} className="text-[10px] font-mono text-muted-foreground" />
         <span className="text-[10px] font-mono text-muted-foreground">
           {anecdote.source.date}
         </span>

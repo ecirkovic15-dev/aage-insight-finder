@@ -1,4 +1,5 @@
 import { ReportType, getMetricsByCategory, Metric } from "@/data/aageData";
+import { HighlightText } from "./HighlightText";
 
 interface SidebarProps {
   reportType: ReportType;
@@ -34,7 +35,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
                       : "text-primary-foreground/70 hover:text-primary-foreground hover:bg-sidebar-accent/50"
                   }`}
                 >
-                  <span className="truncate flex-1">{metric.label}</span>
+                  <HighlightText text={metric.label} className="truncate flex-1" />
                   {metric.isNewQuestion && (
                     <span className="shrink-0 text-[9px] font-mono px-1 py-0.5 bg-accent/20 text-accent rounded">
                       Δ
