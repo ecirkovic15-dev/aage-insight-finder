@@ -1,19 +1,21 @@
 import { ReportType, Metric } from "@/data/aageData";
 import { useSearch } from "@/context/SearchContext";
 import { SearchResultsPanel } from "./SearchResultsPanel";
-import { Search, X, MessageSquareText } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { X, MessageSquareText } from "lucide-react";
+import { useRef, useState, useEffect, RefObject } from "react";
 import { AnimatePresence } from "framer-motion";
 
 interface HeaderProps {
   reportType: ReportType;
   onReportTypeChange: (type: ReportType) => void;
   onSelectMetric: (metric: Metric) => void;
+  searchInputRef?: RefObject<HTMLInputElement>;
 }
 
-export function Header({ reportType, onReportTypeChange, onSelectMetric }: HeaderProps) {
+export function Header({ reportType, onReportTypeChange, onSelectMetric, searchInputRef }: HeaderProps) {
   const { query, setQuery, results } = useSearch();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const fallbackRef = useRef<HTMLInputElement>(null);
+  const inputRef = searchInputRef || fallbackRef;
   const containerRef = useRef<HTMLDivElement>(null);
   const [showResults, setShowResults] = useState(false);
 
