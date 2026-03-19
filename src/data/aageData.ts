@@ -1003,9 +1003,9 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns who participate in formal rotations around different areas of the organisation.",
     dataPoints: [
-      { year: 2023, value: 20, source: "2023 AAGE Intern Survey", pageRef: "p13", questionNote: "Only 20% had this opportunity" },
+      { year: 2023, value: 20, source: "2023 AAGE Intern Survey", pageRef: "p45", questionNote: "Law 62% vs engineering 10%; Top Ten: higher than average" },
       { year: 2024, value: 18, source: "2024 AAGE Intern Survey", pageRef: "p12", questionNote: "One in five interns" },
-      { year: 2025, value: 22, source: "2025 AAGE Intern Survey", pageRef: "p12", questionNote: "Slight increase; Top 15: 47% include rotations" },
+      { year: 2025, value: 22, source: "2025 AAGE Intern Survey", pageRef: "p43", questionNote: "Slight increase; Top 15: 47% include rotations" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
@@ -1017,9 +1017,9 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns who experienced rotations rating them as excellent or very good.",
     dataPoints: [
-      { year: 2023, value: 82, source: "2023 AAGE Intern Survey", pageRef: "p13" },
+      { year: 2023, value: 83, source: "2023 AAGE Intern Survey", pageRef: "p46", questionNote: "56% excellent + 27% very good" },
       { year: 2024, value: 87, source: "2024 AAGE Intern Survey", pageRef: "p12" },
-      { year: 2025, value: 89, source: "2025 AAGE Intern Survey", pageRef: "p12", questionNote: "Top 15: 94%" },
+      { year: 2025, value: 86, source: "2025 AAGE Intern Survey", pageRef: "p44", questionNote: "66% excellent + 20% very good; Top 15: 94%" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
