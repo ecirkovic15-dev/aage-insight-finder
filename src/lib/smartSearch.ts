@@ -131,7 +131,13 @@ export function smartSearch(prompt: string, reportType: ReportType): SearchResul
   if (keywords.length === 0) return [];
   
   const results: SearchResult[] = [];
-  const metrics = reportType === "employer" ? employerMetrics : candidateMetrics;
+  const metricsMap: Record<ReportType, Metric[]> = {
+    employer: employerMetrics,
+    candidate: candidateMetrics,
+    graduate: graduateMetrics,
+    intern: internMetrics,
+  };
+  const metrics = metricsMap[reportType];
   
   // Score each metric
   for (const m of metrics) {

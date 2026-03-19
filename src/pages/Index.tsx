@@ -115,7 +115,7 @@ const Index = () => {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border">
-                        {(reportType === "employer" ? employerMetrics : candidateMetrics).map((m) => {
+                        {({ employer: employerMetrics, candidate: candidateMetrics, graduate: graduateMetrics, intern: internMetrics }[reportType]).map((m) => {
                           const available = m.dataPoints.filter((d) => d.value !== null).length;
                           return (
                             <tr
