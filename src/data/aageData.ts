@@ -208,10 +208,10 @@ export const employerMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of employers offering graduates a hybrid work model.",
     dataPoints: [
-      { year: 2023, value: null, source: "2023 AAGE Employer Survey", questionNote: "Not reported in first 50 pages" },
+      { year: 2023, value: 63, source: "2023 AAGE Employer Survey", pageRef: "p53", questionNote: "Employer-directed hybrid model; 26% flexible, 9% office all time" },
       { year: 2024, value: 68, source: "2024 AAGE Employer Survey", pageRef: "Executive Summary, p14" },
       { year: 2025, value: 74, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary, p15" },
-      { year: 2026, value: null, source: "2026 AAGE Employer Survey", questionNote: "Not stated in summary report first pages" },
+      { year: 2026, value: 71, source: "2026 AAGE Employer Survey", pageRef: "p73", questionNote: "Employer-directed hybrid; 14% office all time, 13% flexible" },
     ],
   },
   {
