@@ -18,6 +18,7 @@ const Index = () => {
   const [selectedMetric, setSelectedMetric] = useState<Metric | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
+  const [showAnecdotes, setShowAnecdotes] = useState(true);
 
   const handleReportTypeChange = (type: ReportType) => {
     setReportType(type);
