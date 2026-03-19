@@ -84,11 +84,9 @@ export function SearchResultsPanel({ results, onSelectMetric, onClose }: SearchR
             <button
               key={r.id}
               onClick={() => {
-                // Find the first metric this anecdote maps to and navigate there
                 if (r.anecdote?.metricIds[0]) {
-                  const { employerMetrics, candidateMetrics } = require("@/data/aageData");
                   const allMetrics = [...employerMetrics, ...candidateMetrics];
-                  const metric = allMetrics.find((m: Metric) => m.id === r.anecdote!.metricIds[0]);
+                  const metric = allMetrics.find((m) => m.id === r.anecdote!.metricIds[0]);
                   if (metric) onSelectMetric(metric);
                 }
                 onClose();
