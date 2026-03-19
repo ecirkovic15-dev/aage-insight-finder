@@ -124,13 +124,6 @@ export function SearchResultsPanel({ results, onSelectMetric, onClose }: SearchR
                   <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-2 italic">
                     "{r.snippet}"
                   </p>
-                  <div className="flex flex-wrap gap-1 mt-1.5">
-                    {r.matchedKeywords.slice(0, 3).map(kw => (
-                      <span key={kw} className="px-1.5 py-0.5 text-[9px] font-mono-data bg-accent/10 text-accent rounded">
-                        {kw}
-                      </span>
-                    ))}
-                  </div>
                 </div>
               </div>
             </button>
