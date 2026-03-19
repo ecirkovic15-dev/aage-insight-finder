@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { ReportType, Metric, employerMetrics, candidateMetrics } from "@/data/aageData";
+import { getAnecdotesForMetric } from "@/data/anecdotes";
 import { Header } from "@/components/dashboard/Header";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { OverviewGrid } from "@/components/dashboard/OverviewGrid";
 import { TrendChart } from "@/components/dashboard/TrendChart";
 import { ProvenancePanel } from "@/components/dashboard/ProvenancePanel";
 import { DataTable } from "@/components/dashboard/DataTable";
+import { AnecdoteCard } from "@/components/dashboard/AnecdoteCard";
 
 const Index = () => {
   const [reportType, setReportType] = useState<ReportType>("employer");
