@@ -44,7 +44,7 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
         )}
       </div>
       <div className="mt-2 flex items-baseline gap-2">
-        {latestPoint?.value ? (
+        {latestPoint?.value !== null && latestPoint?.value !== undefined ? (
           <>
             <span className="font-mono-data text-xl font-semibold text-foreground">
               {formatValue(latestPoint.value, metric.unit)}
