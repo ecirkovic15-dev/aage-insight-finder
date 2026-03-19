@@ -80,9 +80,9 @@ const Index = () => {
               </div>
 
               {/* All metrics as a reference table */}
-              <div className="bg-surface border border-border">
+              <div className="bg-surface border border-border rounded-lg overflow-hidden">
                 <div className="px-4 py-3 border-b border-border">
-                  <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                  <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                     All {reportType === "employer" ? "Employer" : "Candidate"} Metrics — Data Dictionary
                   </h3>
                 </div>

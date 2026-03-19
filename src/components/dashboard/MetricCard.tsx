@@ -9,9 +9,6 @@ interface MetricCardProps {
 
 export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
   const latestPoint = [...metric.dataPoints].reverse().find((d) => d.value !== null);
-  const previousPoint = metric.dataPoints.find(
-    (d) => d.value !== null && d.year !== latestPoint?.year
-  );
   const sortedWithValues = metric.dataPoints.filter((d) => d.value !== null);
   const prev = sortedWithValues.length >= 2 ? sortedWithValues[sortedWithValues.length - 2] : null;
 
@@ -31,16 +28,16 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
     <motion.button
       layout
       onClick={onClick}
-      className={`w-full text-left p-4 bg-surface border transition-snap ${
+      className={`w-full text-left p-4 bg-surface rounded-lg border transition-snap ${
         isSelected
-          ? "border-foreground shadow-tight"
-          : "border-border hover:border-muted-foreground"
+          ? "border-primary shadow-tight ring-2 ring-primary/20"
+          : "border-border hover:border-primary/40 hover:shadow-tight"
       }`}
     >
       <div className="flex items-start justify-between gap-2">
         <p className="text-xs text-muted-foreground leading-tight">{metric.label}</p>
         {metric.isNewQuestion && (
-          <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-mono bg-warning-light text-warning-badge">
+          <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-mono bg-warning-light text-warning-badge rounded">
             Δ {metric.yearIntroduced}
           </span>
         )}
