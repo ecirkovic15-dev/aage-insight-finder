@@ -1130,12 +1130,11 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns citing opportunities for future graduate employment as a reason for applying.",
     dataPoints: [
-      { year: 2023, value: 67, source: "2023 AAGE Intern Survey", pageRef: "p12", questionNote: "Two-thirds apply because of future opportunity" },
-      { year: 2024, value: null, source: "2024 AAGE Intern Survey", questionNote: "Not directly stated as percentage" },
-      { year: 2025, value: 58, source: "2025 AAGE Intern Survey", pageRef: "p12", questionNote: "Up from 45% in 2024; Top 15: 75%" },
+      { year: 2023, value: 67, source: "2023 AAGE Intern Survey", pageRef: "p22-23", questionNote: "Two-thirds apply because of future opportunity" },
+      { year: 2024, value: 45, source: "2025 AAGE Intern Survey", pageRef: "p26", questionNote: "Cited as 2024 comparative in 2025 report" },
+      { year: 2025, value: 58, source: "2025 AAGE Intern Survey", pageRef: "p26", questionNote: "Up from 45% in 2024; Top 15: 75%" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
-    consistencyNote: "2023 figure uses different question framing (opportunity for future internships rather than graduate employment)",
   },
   {
     id: "intern_practical_experience",
