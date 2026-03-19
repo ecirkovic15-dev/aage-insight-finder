@@ -1,15 +1,9 @@
 import { Metric, years } from "@/data/aageData";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  Cell,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
 } from "recharts";
 import { motion } from "framer-motion";
+import { HighlightText } from "./HighlightText";
 
 interface TrendChartProps {
   metric: Metric;
@@ -34,7 +28,6 @@ export function TrendChart({ metric }: TrendChartProps) {
     return val.toLocaleString();
   };
 
-  // Prosple brand colors
   const barColor = metric.reportType === "employer" ? "hsl(219, 94%, 69%)" : "hsl(42, 97%, 65%)";
   const barColorMuted = metric.reportType === "employer" ? "hsl(219, 50%, 85%)" : "hsl(42, 50%, 85%)";
 
@@ -47,8 +40,8 @@ export function TrendChart({ metric }: TrendChartProps) {
     >
       <div className="flex items-start justify-between mb-1">
         <div>
-          <h2 className="text-base font-semibold text-foreground">{metric.label}</h2>
-          <p className="text-xs text-muted-foreground mt-1 max-w-[65ch]">{metric.description}</p>
+          <HighlightText text={metric.label} className="text-base font-semibold text-foreground" as="h2" />
+          <HighlightText text={metric.description} className="text-xs text-muted-foreground mt-1 max-w-[65ch] block" as="p" />
         </div>
         <span
           className={`px-2.5 py-1 text-[10px] font-mono uppercase tracking-wider rounded-full ${
@@ -63,7 +56,7 @@ export function TrendChart({ metric }: TrendChartProps) {
 
       {metric.consistencyNote && (
         <div className="mt-2 px-3 py-2 bg-warning-light border border-destructive/20 text-[11px] text-warning-badge font-mono rounded-md">
-          ⚠ {metric.consistencyNote}
+          <HighlightText text={`⚠ ${metric.consistencyNote}`} />
         </div>
       )}
 
@@ -71,16 +64,10 @@ export function TrendChart({ metric }: TrendChartProps) {
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
             <CartesianGrid strokeDasharray="1 3" stroke="hsl(0, 0%, 84%)" vertical={false} />
-            <XAxis
-              dataKey="year"
-              tick={{ fontSize: 12, fontFamily: "Poppins, sans-serif" }}
-              axisLine={{ stroke: "hsl(0, 0%, 84%)" }}
-              tickLine={false}
-            />
+            <XAxis dataKey="year" tick={{ fontSize: 12, fontFamily: "Poppins, sans-serif" }} axisLine={{ stroke: "hsl(0, 0%, 84%)" }} tickLine={false} />
             <YAxis
               tick={{ fontSize: 11, fontFamily: "Geist Mono, monospace" }}
-              axisLine={false}
-              tickLine={false}
+              axisLine={false} tickLine={false}
               tickFormatter={(v) => {
                 if (metric.unit === "$") return `$${(v / 1000).toFixed(0)}K`;
                 if (metric.unit === "%") return `${v}%`;

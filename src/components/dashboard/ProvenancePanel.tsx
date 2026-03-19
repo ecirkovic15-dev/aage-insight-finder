@@ -1,5 +1,6 @@
 import { Metric, years } from "@/data/aageData";
 import { motion } from "framer-motion";
+import { HighlightText } from "./HighlightText";
 
 interface ProvenancePanelProps {
   metric: Metric;
@@ -38,16 +39,12 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
                   {formatValue(dp.value, metric.unit)}
                 </span>
               </div>
-              <p className="mt-1 text-[11px] text-muted-foreground">{dp.source}</p>
+              <HighlightText text={dp.source} className="mt-1 text-[11px] text-muted-foreground block" as="p" />
               {dp.pageRef && (
-                <p className="text-[10px] font-mono text-muted-foreground mt-0.5">
-                  📄 {dp.pageRef}
-                </p>
+                <HighlightText text={`📄 ${dp.pageRef}`} className="text-[10px] font-mono text-muted-foreground mt-0.5 block" as="p" />
               )}
               {dp.questionNote && (
-                <p className="mt-1 text-[10px] text-muted-foreground italic leading-relaxed">
-                  "{dp.questionNote}"
-                </p>
+                <HighlightText text={`"${dp.questionNote}"`} className="mt-1 text-[10px] text-muted-foreground italic leading-relaxed block" as="p" />
               )}
               {dp.value === null && (
                 <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge rounded">

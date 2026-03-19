@@ -1,5 +1,6 @@
 import { Metric, years } from "@/data/aageData";
 import { motion } from "framer-motion";
+import { HighlightText } from "./HighlightText";
 
 interface DataTableProps {
   metric: Metric;
@@ -43,7 +44,9 @@ export function DataTable({ metric }: DataTableProps) {
                 <td className="px-4 py-2.5 text-right font-mono-data font-semibold">
                   {formatValue(dp?.value ?? null, metric.unit)}
                 </td>
-                <td className="px-4 py-2.5 text-muted-foreground">{dp?.source ?? "—"}</td>
+                <td className="px-4 py-2.5 text-muted-foreground">
+                  <HighlightText text={dp?.source ?? "—"} />
+                </td>
                 <td className="px-4 py-2.5">
                   {dp?.value !== null ? (
                     <span className="text-[10px] font-mono px-1.5 py-0.5 bg-graduate-light text-graduate">
