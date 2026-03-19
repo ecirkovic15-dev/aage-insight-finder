@@ -52,7 +52,7 @@ const Index = () => {
               <div className="space-y-6">
                 <div>
                   <h2 className="text-lg font-medium">
-                    {reportType === "employer" ? "Employer Survey" : "Candidate Survey"} Overview
+                    {{ employer: "Employer Survey", candidate: "Candidate Survey", graduate: "Graduate Survey", intern: "Intern Survey" }[reportType]} Overview
                   </h2>
                   <p className="text-xs text-muted-foreground mt-1">
                     Select a metric below or from the sidebar to explore trends. All data sourced
