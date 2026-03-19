@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Poppins", "system-ui", "sans-serif"],
         mono: ["Geist Mono", "ui-monospace", "monospace"],
       },
       colors: {
@@ -24,6 +24,12 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         surface: "hsl(var(--surface))",
+        midnight: "hsl(var(--midnight))",
+        cornflower: "hsl(var(--cornflower))",
+        sandy: "hsl(var(--sandy))",
+        poppy: "hsl(var(--poppy))",
+        onahau: "hsl(var(--onahau))",
+        slate: "hsl(var(--slate))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
