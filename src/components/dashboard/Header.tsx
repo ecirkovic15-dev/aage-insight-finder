@@ -1,4 +1,5 @@
 import { ReportType } from "@/data/aageData";
+import prospleLogo from "@/assets/prosple-logo.jpg";
 
 interface HeaderProps {
   reportType: ReportType;
@@ -13,13 +14,15 @@ export function Header({ reportType, onReportTypeChange }: HeaderProps) {
 
   return (
     <header className="bg-surface shrink-0">
-      <div className="flex items-center justify-between px-8 py-5">
-        <div className="flex items-baseline gap-5">
-          <h1 className="font-display text-xl font-medium text-foreground italic">
+      <div className="flex items-center justify-between px-8 py-4">
+        <div className="flex items-center gap-6">
+          <img src={prospleLogo} alt="Prosple" className="h-7 w-auto" />
+          <div className="h-5 w-px bg-border" />
+          <h1 className="font-display text-lg font-medium text-foreground italic">
             Top 100 Graduate Employers™
           </h1>
-          <span className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
-            Longitudinal Intelligence
+          <span className="text-[10px] text-muted-foreground font-semibold uppercase tracking-[0.15em]">
+            Longitudinal Intelligence · 2023–2026
           </span>
         </div>
 
