@@ -1,5 +1,5 @@
 import { SearchResult } from "@/lib/smartSearch";
-import { Metric } from "@/data/aageData";
+import { Metric, employerMetrics, candidateMetrics } from "@/data/aageData";
 import { BarChart3, MessageSquareQuote, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
