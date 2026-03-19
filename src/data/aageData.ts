@@ -1144,12 +1144,12 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns citing gaining practical experience in their chosen field as a reason for applying.",
     dataPoints: [
-      { year: 2023, value: 63, source: "2023 AAGE Intern Survey", pageRef: "p12", questionNote: "To develop better understanding of job/career path" },
-      { year: 2024, value: null, source: "2024 AAGE Intern Survey", questionNote: "Not directly stated" },
-      { year: 2025, value: 48, source: "2025 AAGE Intern Survey", pageRef: "p12", questionNote: "Up from 42% in 2024" },
+      { year: 2023, value: 61, source: "2023 AAGE Intern Survey", pageRef: "p22-23", questionNote: "63% to develop better understanding of job/career path" },
+      { year: 2024, value: 42, source: "2025 AAGE Intern Survey", pageRef: "p26", questionNote: "Cited as 2024 comparative in 2025 report" },
+      { year: 2025, value: 48, source: "2025 AAGE Intern Survey", pageRef: "p26", questionNote: "Up from 42% in 2024" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
-    consistencyNote: "Question framing differs between years",
+    consistencyNote: "2023 framing: 'develop better understanding of job to help decide future career path' (63%). 2024-2025: 'gain practical work experience in chosen field'.",
   },
   {
     id: "intern_summer_program",
