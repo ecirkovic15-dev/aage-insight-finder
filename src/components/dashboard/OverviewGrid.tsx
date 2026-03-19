@@ -8,7 +8,8 @@ interface OverviewGridProps {
 }
 
 export function OverviewGrid({ reportType, selectedMetricId, onSelectMetric }: OverviewGridProps) {
-  const metrics = reportType === "employer" ? employerMetrics : candidateMetrics;
+  const metricsMap: Record<ReportType, Metric[]> = { employer: employerMetrics, candidate: candidateMetrics, graduate: graduateMetrics, intern: internMetrics };
+  const metrics = metricsMap[reportType];
   // Show top metrics in overview
   const topMetrics = metrics.slice(0, 6);
 
