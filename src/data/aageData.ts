@@ -121,10 +121,10 @@ export const employerMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of graduate offers accepted by candidates.",
     dataPoints: [
-      { year: 2023, value: 78, source: "2023 AAGE Employer Survey", pageRef: "p48" },
+      { year: 2023, value: 61, source: "2023 AAGE Employer Survey", pageRef: "p51", questionNote: "Overall average acceptance rate across all industries" },
       { year: 2024, value: 82, source: "2024 AAGE Employer Survey", pageRef: "p49" },
-      { year: 2025, value: 84, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary, p13" },
-      { year: 2026, value: null, source: "2026 AAGE Employer Survey", questionNote: "Not stated in summary report" },
+      { year: 2025, value: 84, source: "2025 AAGE Employer Survey", pageRef: "p57", questionNote: "8,884 accepted out of 10,533 offered" },
+      { year: 2026, value: 89, source: "2026 AAGE Employer Survey", pageRef: "p75", questionNote: "6,787 accepted out of 7,611 offered. 12% renege rate unchanged" },
     ],
   },
   {
