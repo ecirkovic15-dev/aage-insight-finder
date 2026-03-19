@@ -53,6 +53,7 @@ export interface SearchResult {
   metric?: Metric;
   anecdote?: Anecdote;
   matchedKeywords: string[];
+  reportType?: ReportType;
 }
 
 /** Extract meaningful keywords from a natural language prompt */
@@ -128,65 +129,63 @@ function makeSnippet(texts: string[], keywords: string[], maxLen = 120): string 
   return bestText.slice(0, maxLen) + (bestText.length > maxLen ? "…" : "");
 }
 
-/** Run smart search across all metrics and anecdotes */
-export function smartSearch(prompt: string, reportType: ReportType): SearchResult[] {
+/** Run smart search across ALL report types and anecdotes */
+export function smartSearch(prompt: string): SearchResult[] {
   if (!prompt || prompt.trim().length < 3) return [];
   
   const keywords = extractKeywords(prompt);
   if (keywords.length === 0) return [];
   
   const results: SearchResult[] = [];
-  const metricsMap: Record<ReportType, Metric[]> = {
-    employer: employerMetrics,
-    candidate: candidateMetrics,
-    graduate: graduateMetrics,
-    intern: internMetrics,
-  };
-  const metrics = metricsMap[reportType];
+  const allReportTypes: { type: ReportType; metrics: Metric[] }[] = [
+    { type: "employer", metrics: employerMetrics },
+    { type: "candidate", metrics: candidateMetrics },
+    { type: "graduate", metrics: graduateMetrics },
+    { type: "intern", metrics: internMetrics },
+  ];
   
-  // Score each metric
-  for (const m of metrics) {
-    const textsToSearch = [
-      m.label,
-      m.description,
-      m.category,
-      m.consistencyNote ?? "",
-      ...m.dataPoints.map(d => d.source),
-      ...m.dataPoints.map(d => d.questionNote ?? ""),
-    ];
-    
-    let totalScore = 0;
-    const allMatched: string[] = [];
-    
-    for (const t of textsToSearch) {
-      const { score, matched } = scoreText(t, keywords);
-      totalScore += score;
-      matched.forEach(m => { if (!allMatched.includes(m)) allMatched.push(m); });
-    }
-    
-    // Boost label matches (most important)
-    const { score: labelScore } = scoreText(m.label, keywords);
-    totalScore += labelScore * 2;
-    
-    if (totalScore > 0) {
-      results.push({
-        type: "metric",
-        id: m.id,
-        title: m.label,
-        snippet: makeSnippet([m.description, ...textsToSearch], keywords),
-        score: totalScore,
-        metric: m,
-        matchedKeywords: allMatched,
-      });
+  // Score metrics across ALL report types
+  for (const { type, metrics } of allReportTypes) {
+    for (const m of metrics) {
+      const textsToSearch = [
+        m.label,
+        m.description,
+        m.category,
+        m.consistencyNote ?? "",
+        ...m.dataPoints.map(d => d.source),
+        ...m.dataPoints.map(d => d.questionNote ?? ""),
+      ];
+      
+      let totalScore = 0;
+      const allMatched: string[] = [];
+      
+      for (const t of textsToSearch) {
+        const { score, matched } = scoreText(t, keywords);
+        totalScore += score;
+        matched.forEach(m => { if (!allMatched.includes(m)) allMatched.push(m); });
+      }
+      
+      // Boost label matches (most important)
+      const { score: labelScore } = scoreText(m.label, keywords);
+      totalScore += labelScore * 2;
+      
+      if (totalScore > 0) {
+        results.push({
+          type: "metric",
+          id: m.id,
+          title: m.label,
+          snippet: makeSnippet([m.description, ...textsToSearch], keywords),
+          score: totalScore,
+          metric: m,
+          matchedKeywords: allMatched,
+          reportType: type,
+        });
+      }
     }
   }
   
-  // Score anecdotes
-  const relevantAnecdotes = anecdotes.filter(
-    a => a.category === reportType || a.category === "both"
-  );
-  
-  for (const a of relevantAnecdotes) {
+  // Score ALL anecdotes (not filtered by report type)
+  for (const a of anecdotes) {
     const textsToSearch = [a.title, a.quote, a.context, a.relevance, a.source.meeting];
     
     let totalScore = 0;
@@ -198,10 +197,16 @@ export function smartSearch(prompt: string, reportType: ReportType): SearchResul
       matched.forEach(m => { if (!allMatched.includes(m)) allMatched.push(m); });
     }
     
-    // Boost featured anecdotes slightly
     if (a.featured) totalScore *= 1.2;
     
     if (totalScore > 0) {
+      // Determine report type from category
+      const anecdoteReport: ReportType = 
+        a.category === "employer" ? "employer" : 
+        a.category === "candidate" ? "candidate" :
+        a.category === "graduate" ? "graduate" :
+        a.category === "intern" ? "intern" : "employer";
+      
       results.push({
         type: "anecdote",
         id: a.id,
@@ -210,11 +215,11 @@ export function smartSearch(prompt: string, reportType: ReportType): SearchResul
         score: totalScore,
         anecdote: a,
         matchedKeywords: allMatched,
+        reportType: anecdoteReport,
       });
     }
   }
   
-  // Sort by score descending
   results.sort((a, b) => b.score - a.score);
   
   return results;

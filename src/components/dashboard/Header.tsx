@@ -8,7 +8,7 @@ import { AnimatePresence } from "framer-motion";
 interface HeaderProps {
   reportType: ReportType;
   onReportTypeChange: (type: ReportType) => void;
-  onSelectMetric: (metric: Metric) => void;
+  onSelectMetric: (metric: Metric, reportType?: ReportType) => void;
   searchInputRef?: RefObject<HTMLInputElement>;
 }
 
@@ -82,7 +82,7 @@ export function Header({ reportType, onReportTypeChange, onSelectMetric, searchI
             {showResults && (
               <SearchResultsPanel
                 results={results}
-                onSelectMetric={onSelectMetric}
+                onSelectMetric={(metric, rt) => onSelectMetric(metric, rt)}
                 onClose={() => setShowResults(false)}
               />
             )}
