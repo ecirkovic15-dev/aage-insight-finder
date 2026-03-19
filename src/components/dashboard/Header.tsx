@@ -82,7 +82,7 @@ export function Header({ reportType, onReportTypeChange, onSelectMetric, searchI
             {showResults && (
               <SearchResultsPanel
                 results={results}
-                onSelectMetric={onSelectMetric}
+                onSelectMetric={(metric, rt) => onSelectMetric(metric, rt)}
                 onClose={() => setShowResults(false)}
               />
             )}
