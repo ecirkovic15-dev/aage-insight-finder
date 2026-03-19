@@ -39,7 +39,7 @@ export function SearchDialog({ open, onClose, onSelectMetric }: SearchDialogProp
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-start justify-center pt-[15vh] bg-foreground/40 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/40 backdrop-blur-sm"
           onClick={(e) => { if (e.target === e.currentTarget) onClose(); }}
         >
           <motion.div
@@ -47,7 +47,34 @@ export function SearchDialog({ open, onClose, onSelectMetric }: SearchDialogProp
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -8 }}
             transition={{ duration: 0.15 }}
-            className="w-full max-w-xl mx-4 bg-popover border border-border rounded-xl shadow-lg overflow-hidden"
+            className="w-full max-w-4xl mx-4 max-h-[70vh] bg-popover border border-border rounded-xl shadow-lg overflow-hidden flex flex-col"
+          >
+            {/* Search input - always at top */}
+            <div className="flex items-center gap-3 px-5 py-4 border-b border-border shrink-0">
+              <Search className="w-4 h-4 text-muted-foreground shrink-0" />
+              <input
+                ref={inputRef}
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Ask about trends, e.g. &quot;client asking about AI&quot;…"
+                className="flex-1 text-sm text-foreground placeholder:text-muted-foreground bg-transparent outline-none"
+              />
+              {query && (
+                <button onClick={() => setQuery("")} className="text-muted-foreground hover:text-foreground">
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+              <button
+                onClick={onClose}
+                className="text-[10px] font-mono-data text-muted-foreground px-1.5 py-0.5 rounded border border-border"
+              >
+                ESC
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="flex-1 overflow-hidden">
           >
             {/* Search input */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-border">
