@@ -135,7 +135,7 @@ export const employerMetrics: Metric[] = [
     unit: "count",
     description: "Median number of graduate vacancies per employer.",
     dataPoints: [
-      { year: 2023, value: null, source: "2023 AAGE Employer Survey", questionNote: "Historical chart shows 2022=15; 2023 specific median not stated in first 50 pages" },
+      { year: 2023, value: 31, source: "2023 AAGE Employer Survey", pageRef: "p49", questionNote: "Confirmed from historical chart on p51 of 2024 report" },
       { year: 2024, value: 27, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary, p13", questionNote: "Cited as comparative: 'cf. 27 2024'" },
       { year: 2025, value: 20, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary, p13" },
       { year: 2026, value: 22, source: "2026 AAGE Employer Survey", pageRef: "Executive Summary, p14" },
