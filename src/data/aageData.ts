@@ -1074,9 +1074,9 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns completing a paid internship.",
     dataPoints: [
-      { year: 2023, value: 96, source: "2023 AAGE Intern Survey", pageRef: "p13", questionNote: "Just 4% are unpaid" },
+      { year: 2023, value: 96, source: "2023 AAGE Intern Survey", pageRef: "p48", questionNote: "Just 4% are unpaid; 45% casual, 36% fixed-term" },
       { year: 2024, value: 95, source: "2024 AAGE Intern Survey", pageRef: "p12", questionNote: "More than nine in ten" },
-      { year: 2025, value: null, source: "2025 AAGE Intern Survey", questionNote: "Not stated directly; shift towards fixed-term contracts noted" },
+      { year: 2025, value: 97, source: "2025 AAGE Intern Survey", pageRef: "p47", questionNote: "3% unpaid; 52% full-time fixed-term, 36% casual" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
