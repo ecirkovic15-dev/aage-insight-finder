@@ -70,10 +70,11 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
         )}
       </div>
       <p className="mt-2 font-mono-data text-[11px] text-muted-foreground/70">
-        {latestPoint ? `${latestPoint.year} · ${latestPoint.source}` : "No data"}
-        {earliestPoint && latestPoint && earliestPoint.year !== latestPoint.year && (
-          <span className="ml-1 text-muted-foreground/50">({earliestPoint.year}–{latestPoint.year})</span>
-        )}
+        {latestPoint
+          ? earliestPoint && earliestPoint.year !== latestPoint.year
+            ? `${earliestPoint.year}–${latestPoint.year} trend`
+            : `${latestPoint.year} data`
+          : "No data"}
       </p>
       {metric.consistencyNote && (
         <HighlightText
