@@ -42,6 +42,7 @@ const STOP_WORDS = new Set([
   "such","only","own","same","other","new","old","like","want","wants","need",
   "needs","tell","telling","told","ask","asking","asked","know","knows","talk",
   "talking","client","clients","rep","reps","sales","customer","customers",
+  "per","its","get","got","many","much","well","way",
 ]);
 
 export interface SearchResult {
@@ -136,6 +137,9 @@ export function smartSearch(prompt: string): SearchResult[] {
   const keywords = extractKeywords(prompt);
   if (keywords.length === 0) return [];
   
+  // Extract the original query phrase (normalized) for exact matching
+  const queryPhrase = prompt.toLowerCase().replace(/[^\w\s'-]/g, " ").trim();
+  
   const results: SearchResult[] = [];
   const allReportTypes: { type: ReportType; metrics: Metric[] }[] = [
     { type: "employer", metrics: employerMetrics },
@@ -168,6 +172,11 @@ export function smartSearch(prompt: string): SearchResult[] {
       // Boost label matches (most important)
       const { score: labelScore } = scoreText(m.label, keywords);
       totalScore += labelScore * 2;
+      
+      // Big boost for exact query phrase appearing in label
+      if (queryPhrase.length >= 3 && m.label.toLowerCase().includes(queryPhrase)) {
+        totalScore += 20;
+      }
       
       if (totalScore > 0) {
         results.push({
