@@ -1047,7 +1047,7 @@ export const internMetrics: Metric[] = [
     dataPoints: [
       { year: 2023, value: null, source: "2023 AAGE Intern Survey", questionNote: "Not reported in this format" },
       { year: 2024, value: 36, source: "2024 AAGE Intern Survey", pageRef: "p13", questionNote: "One in three; 67% for job security, 32% better remuneration" },
-      { year: 2025, value: 34, source: "2025 AAGE Intern Survey", pageRef: "p13-16", questionNote: "Two in three stop applying (66%); 34% continue" },
+      { year: 2025, value: 34, source: "2025 AAGE Intern Survey", pageRef: "p53", questionNote: "Two in three stop applying (66%); 81% continue to explore options" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
