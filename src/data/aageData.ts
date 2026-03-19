@@ -1031,9 +1031,9 @@ export const internMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of interns who have accepted or would accept a graduate position with their internship employer.",
     dataPoints: [
-      { year: 2023, value: 77, source: "2023 AAGE Intern Survey", pageRef: "p13", questionNote: "18% accepted + 59% would accept" },
+      { year: 2023, value: 77, source: "2023 AAGE Intern Survey", pageRef: "p53", questionNote: "18% accepted + 59% would accept; Top Ten: 39% accepted" },
       { year: 2024, value: 76, source: "2024 AAGE Intern Survey", pageRef: "p13", questionNote: "Three in four interns" },
-      { year: 2025, value: 81, source: "2025 AAGE Intern Survey", pageRef: "p13", questionNote: "15% accepted + 66% would accept" },
+      { year: 2025, value: 81, source: "2025 AAGE Intern Survey", pageRef: "p50", questionNote: "15% accepted + 66% would accept; Top 15: 14% accepted + 74% would accept" },
       { year: 2026, value: null, source: "2026 AAGE Intern Survey", questionNote: "Not yet released" },
     ],
   },
