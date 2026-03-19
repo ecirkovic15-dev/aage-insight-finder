@@ -192,7 +192,7 @@ export const employerMetrics: Metric[] = [
     unit: "%",
     description: "Percentage of employers citing forecasting graduate role requirements as their top challenge.",
     dataPoints: [
-      { year: 2023, value: null, source: "2023 AAGE Employer Survey", questionNote: "Not reported as separate metric" },
+      { year: 2023, value: 32, source: "2023 AAGE Employer Survey", pageRef: "p57", questionNote: "'Accurate forecasting of graduate roles needed' — 32%" },
       { year: 2024, value: null, source: "2024 AAGE Employer Survey", questionNote: "Not broken out separately" },
       { year: 2025, value: 25, source: "2025 AAGE Employer Survey", pageRef: "Executive Summary" },
       { year: 2026, value: 38, source: "2026 AAGE Employer Survey", pageRef: "Executive Summary, p13" },
