@@ -601,7 +601,7 @@ export const graduateMetrics: Metric[] = [
       { year: 2023, value: 71, source: "2023 AAGE Graduate Survey", pageRef: "p14", questionNote: "34% expect 5+ years, 37% expect 3-4 years" },
       { year: 2024, value: 74, source: "2024 AAGE Graduate Survey", pageRef: "p13" },
       { year: 2025, value: null, source: "2025 AAGE Graduate Survey", questionNote: "Not available" },
-      { year: 2026, value: null, source: "2026 AAGE Graduate Survey", questionNote: "Not reported in first 50 pages of summary report" },
+      { year: 2026, value: 76, source: "2026 AAGE Graduate Survey", pageRef: "p60", questionNote: "37% expect 3-4 years + 39% expect 5+ years = 76%. Only 3% less than a year." },
     ],
   },
   {
