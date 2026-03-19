@@ -22,7 +22,8 @@ interface SearchDialogProps {
 }
 
 export function SearchDialog({ open, onClose, onSelectMetric }: SearchDialogProps) {
-  const { query, setQuery, results } = useSearch();
+  const [query, setQuery] = useState("");
+  const results = useMemo(() => smartSearch(query), [query]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
