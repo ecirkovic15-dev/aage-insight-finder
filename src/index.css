@@ -7,7 +7,7 @@
 
 @layer base {
   :root {
-    --background: 210 20% 97%;
+    --background: 0 0% 98%;
     --foreground: 220 61% 23%;
     --surface: 0 0% 100%;
     --surface-foreground: 220 61% 23%;
@@ -21,11 +21,11 @@
     --primary: 219 94% 69%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 207 100% 90%;
+    --secondary: 207 100% 95%;
     --secondary-foreground: 220 61% 23%;
 
     --muted: 210 15% 94%;
-    --muted-foreground: 218 13% 34%;
+    --muted-foreground: 218 13% 46%;
 
     --accent: 42 97% 65%;
     --accent-foreground: 220 61% 23%;
@@ -33,27 +33,27 @@
     --destructive: 7 77% 54%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 84%;
-    --input: 0 0% 84%;
+    --border: 220 13% 90%;
+    --input: 220 13% 90%;
     --ring: 219 94% 69%;
 
     --radius: 8px;
 
     /* AAGE Domain Colors — mapped to Prosple palette */
     --employer: 219 94% 69%;
-    --employer-light: 207 100% 90%;
+    --employer-light: 207 100% 95%;
     --candidate: 42 97% 65%;
-    --candidate-light: 42 90% 92%;
+    --candidate-light: 42 90% 95%;
     --graduate: 150 50% 40%;
-    --graduate-light: 150 50% 90%;
+    --graduate-light: 150 50% 93%;
     --warning: 7 77% 54%;
-    --warning-light: 7 80% 94%;
+    --warning-light: 7 80% 95%;
     --success: 150 50% 40%;
 
     /* Prosple specific */
     --midnight: 220 61% 23%;
-    --slate: 218 13% 34%;
-    --onahau: 207 100% 90%;
+    --slate: 218 13% 46%;
+    --onahau: 207 100% 95%;
     --cornflower: 219 94% 69%;
     --sandy: 42 97% 65%;
     --poppy: 7 77% 54%;
@@ -65,15 +65,14 @@
     --chart-4: 280 45% 55%;
     --chart-5: 7 77% 54%;
 
-    --sidebar-background: 220 61% 23%;
-    --sidebar-foreground: 207 100% 90%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 61% 23%;
     --sidebar-primary: 219 94% 69%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 50% 30%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 220 40% 32%;
+    --sidebar-accent: 220 20% 96%;
+    --sidebar-accent-foreground: 220 61% 23%;
+    --sidebar-border: 220 13% 90%;
     --sidebar-ring: 219 94% 69%;
-  }
 }
 
 @layer base {
