@@ -51,8 +51,8 @@ const Index = () => {
               />
 
               {/* Legend */}
-              <div className="bg-surface border border-border p-4">
-                <h3 className="text-xs font-medium text-muted-foreground uppercase tracking-wider mb-3">
+              <div className="bg-surface border border-border rounded-lg p-4">
+                <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                   Data Integrity Legend
                 </h3>
                 <div className="flex flex-wrap gap-4 text-[11px]">
