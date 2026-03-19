@@ -486,10 +486,10 @@ export const graduateMetrics: Metric[] = [
     dataPoints: [
       { year: 2023, value: 33, source: "2023 AAGE Graduate Survey", pageRef: "p14", questionNote: "Consistent with 32 in 2022. Top Ten NES: 71" },
       { year: 2024, value: 29, source: "2024 AAGE Graduate Survey", pageRef: "p14", questionNote: "44% rate engagement 9 or 10. Top 15 NES: 68% rate 9/10" },
-      { year: 2025, value: null, source: "2025 AAGE Graduate Survey", questionNote: "2025 full report not available" },
-      { year: 2026, value: null, source: "2026 AAGE Graduate Survey", questionNote: "Not reported in first 50 pages of summary report" },
+      { year: 2025, value: 36, source: "2026 AAGE Graduate Survey", pageRef: "p73 (reflections)", questionNote: "Cited as 2025 comparative: 'moving from 36 in 2025 to 40 in 2026'" },
+      { year: 2026, value: 40, source: "2026 AAGE Graduate Survey", pageRef: "p73", questionNote: "51% Promoters, 37% Passives, 12% Detractors. Top 15 NES: 68" },
     ],
-    consistencyNote: "NES trending slightly down: 32 (2022) → 33 (2023) → 29 (2024)",
+    consistencyNote: "NES: 32 (2022) → 33 (2023) → 29 (2024) → 36 (2025) → 40 (2026). Strong rebound.",
   },
   {
     id: "grad_experience_better",
