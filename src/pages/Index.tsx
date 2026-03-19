@@ -22,12 +22,13 @@ const Index = () => {
     setSelectedMetric(null);
   };
 
-  const handleSelectMetric = (metric: Metric) => {
+  const handleSelectMetric = (metric: Metric, switchToReport?: ReportType) => {
+    if (switchToReport) setReportType(switchToReport);
     setSelectedMetric(metric);
   };
 
   return (
-    <SearchProvider reportType={reportType}>
+    <SearchProvider>
       <div className="h-screen flex flex-col bg-background">
         <WelcomeModal
           onSelectReport={(type) => { setReportType(type); setSelectedMetric(null); }}
