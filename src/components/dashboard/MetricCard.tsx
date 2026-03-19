@@ -10,13 +10,13 @@ interface MetricCardProps {
 }
 
 export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
-  const latestPoint = [...metric.dataPoints].reverse().find((d) => d.value !== null);
   const sortedWithValues = metric.dataPoints.filter((d) => d.value !== null);
-  const prev = sortedWithValues.length >= 2 ? sortedWithValues[sortedWithValues.length - 2] : null;
+  const latestPoint = sortedWithValues.length > 0 ? sortedWithValues[sortedWithValues.length - 1] : null;
+  const earliestPoint = sortedWithValues.length >= 2 ? sortedWithValues[0] : null;
 
   let changePercent: number | null = null;
-  if (latestPoint?.value !== null && latestPoint?.value !== undefined && prev?.value) {
-    changePercent = ((latestPoint.value - prev.value) / prev.value) * 100;
+  if (latestPoint?.value !== null && latestPoint?.value !== undefined && earliestPoint?.value) {
+    changePercent = ((latestPoint.value - earliestPoint.value) / earliestPoint.value) * 100;
   }
 
   const formatValue = (val: number, unit: string) => {
