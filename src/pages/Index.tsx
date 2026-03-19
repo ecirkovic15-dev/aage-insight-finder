@@ -27,7 +27,7 @@ const Index = () => {
   return (
     <SearchProvider reportType={reportType}>
       <div className="h-screen flex flex-col bg-background">
-        <Header reportType={reportType} onReportTypeChange={handleReportTypeChange} />
+        <Header reportType={reportType} onReportTypeChange={handleReportTypeChange} onSelectMetric={handleSelectMetric} />
 
         <div className="flex flex-1 overflow-hidden">
           <Sidebar
