@@ -175,7 +175,15 @@ export function smartSearch(prompt: string): SearchResult[] {
       
       // Big boost for exact query phrase appearing in label
       if (queryPhrase.length >= 3 && m.label.toLowerCase().includes(queryPhrase)) {
-        totalScore += 20;
+        totalScore += 25;
+      }
+      
+      // Boost when ALL original query words appear in label (handles "ai applications" matching "AI in Applications")
+      const labelLower = m.label.toLowerCase();
+      const queryWords = queryPhrase.split(/\s+/).filter(w => w.length > 1 && !STOP_WORDS.has(w));
+      if (queryWords.length >= 2) {
+        const allInLabel = queryWords.every(w => labelLower.includes(w));
+        if (allInLabel) totalScore += 15;
       }
       
       if (totalScore > 0) {
