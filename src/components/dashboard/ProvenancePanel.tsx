@@ -19,11 +19,11 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 0.1 }}
-      className="bg-surface border border-border rounded-lg"
+      transition={{ duration: 0.25, delay: 0.05 }}
+      className="bg-card border border-border rounded-lg"
     >
-      <div className="px-4 py-3 border-b border-border">
-        <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+      <div className="px-5 py-3.5 border-b border-border">
+        <h3 className="text-sm font-semibold text-foreground">
           Question Provenance
         </h3>
       </div>
@@ -32,22 +32,22 @@ export function ProvenancePanel({ metric }: ProvenancePanelProps) {
           const dp = metric.dataPoints.find((d) => d.year === year);
           if (!dp) return null;
           return (
-            <div key={year} className="px-4 py-3">
+            <div key={year} className="px-5 py-3.5">
               <div className="flex items-baseline justify-between">
-                <span className="font-mono-data text-sm font-medium">{year}</span>
-                <span className="font-mono-data text-sm font-semibold">
+                <span className="font-mono-data text-sm font-medium text-foreground">{year}</span>
+                <span className="font-mono-data text-sm font-semibold text-foreground">
                   {formatValue(dp.value, metric.unit)}
                 </span>
               </div>
-              <HighlightText text={dp.source} className="mt-1 text-[11px] text-muted-foreground block" as="p" />
+              <HighlightText text={dp.source} className="mt-1.5 text-[12px] text-muted-foreground block leading-relaxed" as="p" />
               {dp.pageRef && (
-                <HighlightText text={`📄 ${dp.pageRef}`} className="text-[10px] font-mono text-muted-foreground mt-0.5 block" as="p" />
+                <HighlightText text={`📄 ${dp.pageRef}`} className="text-[11px] font-mono text-muted-foreground/70 mt-1 block" as="p" />
               )}
               {dp.questionNote && (
-                <HighlightText text={`"${dp.questionNote}"`} className="mt-1 text-[10px] text-muted-foreground italic leading-relaxed block" as="p" />
+                <HighlightText text={`"${dp.questionNote}"`} className="mt-1.5 text-[11px] text-muted-foreground italic leading-relaxed block" as="p" />
               )}
               {dp.value === null && (
-                <span className="inline-block mt-1 px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge rounded">
+                <span className="inline-block mt-1.5 px-2 py-0.5 text-[10px] font-medium bg-muted text-muted-foreground rounded">
                   DATA NOT AVAILABLE
                 </span>
               )}

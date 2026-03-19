@@ -1,6 +1,7 @@
 import { Metric } from "@/data/aageData";
 import { motion } from "framer-motion";
 import { HighlightText } from "./HighlightText";
+import { TrendingUp, TrendingDown } from "lucide-react";
 
 interface MetricCardProps {
   metric: Metric;
@@ -14,7 +15,7 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
   const prev = sortedWithValues.length >= 2 ? sortedWithValues[sortedWithValues.length - 2] : null;
 
   let changePercent: number | null = null;
-  if (latestPoint?.value && prev?.value) {
+  if (latestPoint?.value !== null && latestPoint?.value !== undefined && prev?.value) {
     changePercent = ((latestPoint.value - prev.value) / prev.value) * 100;
   }
 
@@ -29,32 +30,34 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
     <motion.button
       layout
       onClick={onClick}
-      className={`w-full text-left p-4 bg-surface rounded-lg border transition-snap ${
+      className={`w-full text-left p-5 bg-card rounded-lg border transition-snap ${
         isSelected
-          ? "border-primary shadow-tight ring-2 ring-primary/20"
-          : "border-border hover:border-primary/40 hover:shadow-tight"
+          ? "border-primary shadow-sm ring-2 ring-primary/15"
+          : "border-border hover:border-primary/30 hover:shadow-sm"
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <HighlightText text={metric.label} className="text-xs text-muted-foreground leading-tight" as="p" />
+        <HighlightText text={metric.label} className="text-[13px] text-muted-foreground leading-snug" as="p" />
         {metric.isNewQuestion && (
-          <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-mono bg-warning-light text-warning-badge rounded">
-            Δ {metric.yearIntroduced}
+          <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-medium bg-accent/15 text-accent-foreground rounded">
+            NEW {metric.yearIntroduced}
           </span>
         )}
       </div>
-      <div className="mt-2 flex items-baseline gap-2">
+      <div className="mt-3 flex items-baseline gap-2.5">
         {latestPoint?.value !== null && latestPoint?.value !== undefined ? (
           <>
-            <span className="font-mono-data text-xl font-semibold text-foreground">
+            <span className="font-mono-data text-2xl font-semibold text-foreground">
               {formatValue(latestPoint.value, metric.unit)}
             </span>
             {changePercent !== null && (
-              <span
-                className={`font-mono-data text-xs ${
-                  changePercent >= 0 ? "text-graduate" : "text-destructive"
-                }`}
-              >
+              <span className={`flex items-center gap-0.5 font-mono-data text-xs font-medium ${
+                changePercent >= 0 ? "text-[hsl(150,50%,35%)]" : "text-destructive"
+              }`}>
+                {changePercent >= 0
+                  ? <TrendingUp className="w-3 h-3" />
+                  : <TrendingDown className="w-3 h-3" />
+                }
                 {changePercent >= 0 ? "+" : ""}
                 {changePercent.toFixed(1)}%
               </span>
@@ -64,13 +67,13 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
           <span className="font-mono-data text-sm text-muted-foreground">—</span>
         )}
       </div>
-      <p className="mt-1 font-mono-data text-[10px] text-muted-foreground">
+      <p className="mt-2 font-mono-data text-[11px] text-muted-foreground/70">
         {latestPoint ? `${latestPoint.year} · ${latestPoint.source}` : "No data"}
       </p>
       {metric.consistencyNote && (
         <HighlightText
           text={`⚠ ${metric.consistencyNote}`}
-          className="mt-1 text-[10px] text-warning-badge leading-tight block"
+          className="mt-2 text-[10px] text-muted-foreground leading-relaxed block"
           as="p"
         />
       )}
