@@ -2,6 +2,8 @@ import { useState, useRef } from "react";
 import { ReportType, Metric, employerMetrics, candidateMetrics, graduateMetrics, internMetrics } from "@/data/aageData";
 import { getAnecdotesForMetric } from "@/data/anecdotes";
 import { SearchProvider } from "@/context/SearchContext";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import { Header } from "@/components/dashboard/Header";
 import { Sidebar } from "@/components/dashboard/Sidebar";
 import { OverviewGrid } from "@/components/dashboard/OverviewGrid";
