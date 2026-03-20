@@ -203,12 +203,20 @@ const Index = () => {
                 </div>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="space-y-6 relative">
                 <button
                   onClick={() => setSelectedMetric(null)}
                   className="text-xs text-muted-foreground hover:text-foreground transition-snap flex items-center gap-1"
                 >
                   ← Back to overview
+                </button>
+
+                {/* Sticky back button visible when scrolled */}
+                <button
+                  onClick={() => setSelectedMetric(null)}
+                  className="sticky top-3 z-10 float-right text-[11px] font-medium text-muted-foreground hover:text-foreground bg-card border border-border rounded-lg px-3 py-1.5 shadow-sm transition-snap flex items-center gap-1.5"
+                >
+                  ← Overview
                 </button>
 
                 <TrendChart metric={selectedMetric} />
