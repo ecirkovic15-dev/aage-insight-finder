@@ -173,7 +173,7 @@ const Index = () => {
                                   </td>
                                 );
                               })}
-                              <td className="px-4 py-2.5">
+                              <td className="px-3 py-2.5 whitespace-nowrap">
                                 <span
                                   className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
                                     available === 4
