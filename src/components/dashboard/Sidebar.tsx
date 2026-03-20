@@ -1,7 +1,7 @@
 import { ReportType, getMetricsByCategory, Metric } from "@/data/aageData";
 import { HighlightText } from "./HighlightText";
 import { useState } from "react";
-import { PanelLeftClose, PanelLeftOpen, ChevronsRight, ChevronsLeft } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 interface SidebarProps {
   reportType: ReportType;
@@ -12,12 +12,11 @@ interface SidebarProps {
 export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: SidebarProps) {
   const categories = getMetricsByCategory(reportType);
   const [collapsed, setCollapsed] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <aside
       className={`shrink-0 bg-card border-r border-border overflow-y-auto h-full transition-all duration-200 ${
-        collapsed ? "w-10" : expanded ? "w-auto max-w-[500px]" : "w-[260px]"
+        collapsed ? "w-10" : "w-auto max-w-[500px]"
       }`}
     >
       <div className={`flex items-center border-b border-border ${collapsed ? "justify-center py-3" : "justify-between px-5 py-4"}`}>
@@ -27,15 +26,6 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
           </p>
         )}
         <div className="flex items-center gap-1">
-          {!collapsed && (
-            <button
-              onClick={() => setExpanded(!expanded)}
-              className="text-muted-foreground hover:text-foreground transition-snap"
-              title={expanded ? "Fit sidebar" : "Expand to fit text"}
-            >
-              {expanded ? <ChevronsLeft className="w-4 h-4" /> : <ChevronsRight className="w-4 h-4" />}
-            </button>
-          )}
           <button
             onClick={() => setCollapsed(!collapsed)}
             className="text-muted-foreground hover:text-foreground transition-snap"
@@ -65,7 +55,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
                         : "text-muted-foreground hover:text-foreground hover:bg-sidebar-accent"
                     }`}
                   >
-                    <HighlightText text={metric.label} className={`flex-1 ${expanded ? "whitespace-nowrap" : "truncate"}`} />
+                    <HighlightText text={metric.label} className="flex-1 whitespace-nowrap" />
                     {metric.isNewQuestion && (
                       <span className="shrink-0 text-[9px] font-mono px-1 py-0.5 bg-accent/20 text-accent rounded">
                         Δ
