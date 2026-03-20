@@ -1,35 +1,40 @@
 
 
-## Plan: Reorder "All Metrics" Table
+## Plan: Flesh Out Employer Challenges Dataset
 
-**What changes:**
+**Problem:** The "Competition for Graduates" metric buries rich sub-challenge data (diversity targets, offer reneges, etc.) inside `questionNote` strings. These should be standalone metrics so they're visible, chartable, and comparable.
 
-In `src/pages/Index.tsx`, sort the metrics array before rendering in the Data Dictionary table. The sort order will be:
+**What we'll add to `src/data/aageData.ts`:**
 
-1. **Survey Sample Size first** — any metric with `category === "Methodology"` (or id containing `sample_size`) goes to the top
-2. **Then by status descending** — metrics with more data points (4/4) come before those with fewer (1/4)
-3. **Then alphabetically by label** within the same status group
+### New Standalone Metrics (extracted from existing questionNotes)
 
-**Implementation:**
+1. **Diversity Targets (Challenge)** — `diversity_challenge`
+   - 2023: 56% (from p57 questionNote)
+   - 2024–2026: null (not yet extracted — can be filled from pages 14, 14, 71)
 
-Replace the direct `.map()` on the metrics array (line ~137) with a sorted copy:
+2. **Offer Reneges (Challenge)** — `reneges_challenge`
+   - 2023: 52% (from p57 questionNote)
+   - 2024–2026: null (to be filled from same pages)
 
-```ts
-{[...metricsForReport].sort((a, b) => {
-  // Sample size first
-  const aIsSample = a.category === "Methodology" ? 1 : 0;
-  const bIsSample = b.category === "Methodology" ? 1 : 0;
-  if (aIsSample !== bIsSample) return bIsSample - aIsSample;
-  
-  // Then by data availability (descending)
-  const aAvail = a.dataPoints.filter(d => d.value !== null).length;
-  const bAvail = b.dataPoints.filter(d => d.value !== null).length;
-  if (aAvail !== bAvail) return bAvail - aAvail;
-  
-  // Then alphabetical
-  return a.label.localeCompare(b.label);
-}).map((m) => { ... })}
-```
+3. **Offer Renege Rate** — `renege_rate`
+   - Already referenced: 12% in 2026 questionNote on offer acceptance
+   - 2023–2025: null, 2026: 12%
 
-**Files to edit:** `src/pages/Index.tsx` only (1 file, ~5 lines changed around the `.map()` call).
+### Update Existing Metrics
+
+4. **Rename** `competition_challenge` to be clearer: "Competition for Graduates (Recruitment Challenge)" with an updated description noting it's one of several tracked challenges.
+
+5. **Update `consistencyNote`** on `competition_challenge` to reference the related challenge metrics for cross-referencing.
+
+### Summary
+
+- **File changed:** `src/data/aageData.ts` only
+- **3 new metrics** added to the `employerMetrics` array under "Employer Challenges" category
+- **1 metric renamed/updated** for clarity
+- All new metrics use data already present in the codebase's questionNote fields
+- Gaps marked as `null` with appropriate questionNotes indicating the page numbers where data can be found
+
+### Technical Detail
+
+Each new metric follows the existing `Metric` type structure with `id`, `label`, `category: "Employer Challenges"`, `reportType: "employer"`, `unit: "%"`, `description`, `dataPoints[]`, and optional `consistencyNote`.
 
