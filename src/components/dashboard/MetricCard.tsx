@@ -37,7 +37,7 @@ export function MetricCard({ metric, onClick, isSelected }: MetricCardProps) {
       }`}
     >
       <div className="flex items-start justify-between gap-2">
-        <HighlightText text={metric.label} className="text-sm font-medium text-foreground leading-snug" as="p" />
+        <HighlightText text={metric.label} className="text-[13px] font-medium text-foreground leading-snug" as="p" />
         {metric.isNewQuestion && (
           <span className="shrink-0 px-1.5 py-0.5 text-[10px] font-medium bg-accent/15 text-accent-foreground rounded">
             NEW {metric.yearIntroduced}
