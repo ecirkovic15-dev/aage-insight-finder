@@ -49,7 +49,7 @@ export function TrendChart({ metric }: TrendChartProps) {
       <div className="flex items-start justify-between mb-1">
         <div>
           <HighlightText text={metric.label} className="text-lg font-semibold text-foreground" as="h2" />
-          <HighlightText text={metric.description} className="text-[13px] text-muted-foreground mt-1 max-w-[65ch] block leading-relaxed" as="p" />
+          <HighlightText text={metric.description} className="text-[13px] text-muted-foreground mt-1 max-w-prose block leading-relaxed" as="p" />
         </div>
         <span className={`px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-full ${badge.bg} ${badge.text}`}>
           {metric.reportType}
