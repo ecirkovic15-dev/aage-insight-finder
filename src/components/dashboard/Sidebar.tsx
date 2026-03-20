@@ -12,12 +12,11 @@ interface SidebarProps {
 export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: SidebarProps) {
   const categories = getMetricsByCategory(reportType);
   const [collapsed, setCollapsed] = useState(false);
-  const [expanded, setExpanded] = useState(false);
 
   return (
     <aside
       className={`shrink-0 bg-card border-r border-border overflow-y-auto h-full transition-all duration-200 ${
-        collapsed ? "w-10" : expanded ? "w-auto max-w-[500px]" : "w-[260px]"
+        collapsed ? "w-10" : "w-auto max-w-[500px]"
       }`}
     >
       <div className={`flex items-center border-b border-border ${collapsed ? "justify-center py-3" : "justify-between px-5 py-4"}`}>
