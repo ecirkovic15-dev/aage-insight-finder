@@ -12,6 +12,7 @@ interface SidebarProps {
 export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: SidebarProps) {
   const categories = getMetricsByCategory(reportType);
   const [collapsed, setCollapsed] = useState(false);
+  const [width, setWidth] = useState(260);
 
   return (
     <aside
