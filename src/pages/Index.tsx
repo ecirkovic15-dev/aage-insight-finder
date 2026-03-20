@@ -82,34 +82,34 @@ const Index = () => {
                   <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-3">
                     Data Integrity Legend
                   </h3>
-                  <div className="flex flex-wrap gap-4 text-[11px]">
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 bg-employer" />
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-[10px]">
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="w-2.5 h-2.5 bg-employer" />
                       <span>Employer data</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 bg-candidate" />
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="w-2.5 h-2.5 bg-candidate" />
                       <span>Candidate data</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-1.5 py-0.5 text-[9px] font-mono bg-warning-light text-warning-badge">Δ</span>
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="px-1 py-0.5 text-[8px] font-mono bg-warning-light text-warning-badge">Δ</span>
                       <span>New or changed question</span>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
                       <span className="w-1.5 h-1.5 rounded-full bg-warning" />
                       <span>Partial data (gaps in years)</span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <span className="px-1.5 py-0.5 text-[9px] font-mono bg-graduate-light text-graduate">VERIFIED</span>
+                    <div className="flex items-center gap-1.5 whitespace-nowrap">
+                      <span className="px-1 py-0.5 text-[8px] font-mono bg-graduate-light text-graduate">VERIFIED</span>
                       <span>Data confirmed from PDF source</span>
                     </div>
                   </div>
                 </div>
 
                 {/* Confidentiality notice */}
-                <div className="rounded-lg px-5 py-3 flex items-center gap-3 border whitespace-nowrap" style={{ backgroundColor: "hsl(0, 53%, 88%)", borderColor: "hsl(0, 40%, 82%)" }}>
-                  <span className="text-sm">🔒</span>
-                  <p className="text-[11px] leading-relaxed" style={{ color: "hsl(0, 40%, 35%)" }}>
+                <div className="rounded-lg px-4 py-3 flex items-center gap-2 border overflow-hidden" style={{ backgroundColor: "hsl(0, 53%, 88%)", borderColor: "hsl(0, 40%, 82%)" }}>
+                  <span className="text-xs shrink-0">🔒</span>
+                  <p className="text-[10px] leading-tight min-w-0" style={{ color: "hsl(0, 40%, 35%)" }}>
                     <span className="font-medium" style={{ color: "hsl(0, 40%, 30%)" }}>Internal Use Only</span> — This dashboard references AAGE industry partner survey reports. Data must not be shared externally or reproduced outside of Prosple.
                   </p>
                 </div>
