@@ -204,7 +204,7 @@ const Index = () => {
               </div>
             ) : (
               <div className="space-y-6">
-                <div className="sticky -top-6 z-20 bg-background border-b border-border -mx-6 px-6 pt-6 pb-4 shadow-sm flex items-center">
+                <div className="sticky -top-6 z-20 bg-background border-b border-border -mx-6 px-6 pt-6 pb-3 shadow-sm flex items-center">
                   <button
                     onClick={() => setSelectedMetric(null)}
                     className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-snap flex items-center gap-1.5"
