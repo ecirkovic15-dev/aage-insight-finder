@@ -15,11 +15,11 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
 
   return (
     <aside
-      className={`shrink-0 bg-card border-r border-border overflow-y-auto h-full transition-all duration-200 ${
+      className={`shrink-0 bg-card border-r border-border h-full transition-all duration-200 flex flex-col ${
         collapsed ? "w-10" : "w-auto max-w-[360px]"
       }`}
     >
-      <div className={`flex items-center border-b border-border ${collapsed ? "justify-center py-3" : "justify-between px-5 py-4"}`}>
+      <div className={`shrink-0 flex items-center border-b border-border ${collapsed ? "justify-center py-3" : "justify-between px-5 py-4"}`}>
         {!collapsed && (
           <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
             Metric Explorer
@@ -36,7 +36,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
         </div>
       </div>
       {!collapsed && (
-        <nav className="py-2 px-2">
+        <nav className="py-2 px-2 overflow-y-auto flex-1">
           {Object.entries(categories).map(([category, metrics]) => (
             <div key={category}>
               <p className="px-3 pt-5 pb-2 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
