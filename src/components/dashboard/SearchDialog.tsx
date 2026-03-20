@@ -127,11 +127,6 @@ export function SearchDialog({ open, onClose, onSelectMetric }: SearchDialogProp
                                 )}
                               </div>
                               <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-2">{r.snippet}</p>
-                              <div className="flex flex-wrap gap-1 mt-1">
-                                {r.matchedKeywords.slice(0, 3).map(kw => (
-                                  <span key={kw} className="px-1.5 py-0.5 text-[9px] font-mono-data bg-primary/10 text-primary rounded">{kw}</span>
-                                ))}
-                              </div>
                             </div>
                             <span className="text-[9px] font-mono-data text-muted-foreground shrink-0">
                               {Math.round((r.score / results[0].score) * 100)}%
