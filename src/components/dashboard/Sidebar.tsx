@@ -1,7 +1,7 @@
 import { ReportType, getMetricsByCategory, Metric } from "@/data/aageData";
 import { HighlightText } from "./HighlightText";
 import { useState } from "react";
-import { PanelLeftClose, PanelLeftOpen, ChevronsRight, ChevronsLeft } from "lucide-react";
+import { PanelLeftClose, PanelLeftOpen } from "lucide-react";
 
 interface SidebarProps {
   reportType: ReportType;
