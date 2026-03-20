@@ -16,7 +16,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
   return (
     <aside
       className={`shrink-0 bg-card border-r border-border overflow-y-auto h-full transition-all duration-200 ${
-        collapsed ? "w-10" : "w-auto max-w-[500px]"
+        collapsed ? "w-10" : "w-auto max-w-[360px]"
       }`}
     >
       <div className={`flex items-center border-b border-border ${collapsed ? "justify-center py-3" : "justify-between px-5 py-4"}`}>
@@ -49,7 +49,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
                   <button
                     key={metric.id}
                     onClick={() => onSelectMetric(metric)}
-                    className={`w-full text-left px-3 py-2 text-[13px] transition-snap flex items-center gap-2 rounded-md ${
+                    className={`w-full text-left px-3 py-2 text-[12px] transition-snap flex items-center gap-2 rounded-md ${
                       isActive
                         ? "bg-sidebar-accent font-medium text-foreground border-l-[3px] border-primary"
                         : "text-muted-foreground hover:text-foreground hover:bg-sidebar-accent"
