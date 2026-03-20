@@ -58,7 +58,7 @@ const Index = () => {
             onSelectMetric={handleSelectMetric}
           />
 
-          <main className="flex-1 overflow-y-auto p-8 bg-background">
+          <main className="flex-1 min-w-0 overflow-y-auto p-6 bg-background">
             {!selectedMetric ? (
               <div className="space-y-6">
                 <div>
@@ -198,7 +198,7 @@ const Index = () => {
 
                 <TrendChart metric={selectedMetric} />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                   <ProvenancePanel metric={selectedMetric} />
                   <DataTable metric={selectedMetric} />
                 </div>
@@ -230,7 +230,7 @@ const Index = () => {
                         </div>
                       </div>
                       {showAnecdotes && (
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                           {metricAnecdotes.map((anecdote, i) => (
                             <AnecdoteCard key={anecdote.id} anecdote={anecdote} index={i} />
                           ))}
