@@ -55,7 +55,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
                         : "text-muted-foreground hover:text-foreground hover:bg-sidebar-accent"
                     }`}
                   >
-                    <HighlightText text={metric.label} className={`flex-1 ${expanded ? "whitespace-nowrap" : "truncate"}`} />
+                    <HighlightText text={metric.label} className="flex-1 whitespace-nowrap" />
                     {metric.isNewQuestion && (
                       <span className="shrink-0 text-[9px] font-mono px-1 py-0.5 bg-accent/20 text-accent rounded">
                         Δ
