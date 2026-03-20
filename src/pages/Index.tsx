@@ -19,17 +19,24 @@ const Index = () => {
   const [reportType, setReportType] = useState<ReportType>("employer");
   const [selectedMetric, setSelectedMetric] = useState<Metric | null>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const mainRef = useRef<HTMLElement>(null);
   const [searchDialogOpen, setSearchDialogOpen] = useState(false);
   const [showAnecdotes, setShowAnecdotes] = useState(true);
+
+  const scrollToTop = () => {
+    mainRef.current?.scrollTo({ top: 0 });
+  };
 
   const handleReportTypeChange = (type: ReportType) => {
     setReportType(type);
     setSelectedMetric(null);
+    scrollToTop();
   };
 
   const handleSelectMetric = (metric: Metric, switchToReport?: ReportType) => {
     if (switchToReport) setReportType(switchToReport);
     setSelectedMetric(metric);
+    scrollToTop();
   };
 
   return (
