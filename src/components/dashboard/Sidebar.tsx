@@ -26,13 +26,24 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
             Metric Explorer
           </p>
         )}
-        <button
-          onClick={() => setCollapsed(!collapsed)}
-          className="text-muted-foreground hover:text-foreground transition-snap"
-          title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
-        >
-          {collapsed ? <PanelLeftOpen className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
-        </button>
+        <div className="flex items-center gap-1">
+          {!collapsed && (
+            <button
+              onClick={() => setExpanded(!expanded)}
+              className="text-muted-foreground hover:text-foreground transition-snap"
+              title={expanded ? "Fit sidebar" : "Expand to fit text"}
+            >
+              {expanded ? <ChevronsLeft className="w-4 h-4" /> : <ChevronsRight className="w-4 h-4" />}
+            </button>
+          )}
+          <button
+            onClick={() => setCollapsed(!collapsed)}
+            className="text-muted-foreground hover:text-foreground transition-snap"
+            title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {collapsed ? <PanelLeftOpen className="w-4 h-4" /> : <PanelLeftClose className="w-4 h-4" />}
+          </button>
+        </div>
       </div>
       {!collapsed && (
         <nav className="py-2 px-2">
