@@ -193,11 +193,11 @@ export const employerMetrics: Metric[] = [
     description: "Percentage of employers citing meeting diversity targets as a top recruitment challenge.",
     dataPoints: [
       { year: 2023, value: 56, source: "2023 AAGE Employer Survey", pageRef: "p57", questionNote: "Second-highest challenge behind competition for graduates (73%)" },
-      { year: 2024, value: null, source: "2024 AAGE Employer Survey", pageRef: "p14", questionNote: "Data available — not yet extracted" },
-      { year: 2025, value: null, source: "2025 AAGE Employer Survey", pageRef: "p14, p64", questionNote: "Full dataset on p64 — not yet extracted" },
-      { year: 2026, value: null, source: "2026 AAGE Employer Survey", pageRef: "p71", questionNote: "Data available — not yet extracted" },
+      { year: 2024, value: 33, source: "2024 AAGE Employer Survey", pageRef: "p14" },
+      { year: 2025, value: 29, source: "2025 AAGE Employer Survey", pageRef: "p14, p64" },
+      { year: 2026, value: 20, source: "2026 AAGE Employer Survey", pageRef: "p71" },
     ],
-    consistencyNote: "Only 2023 data extracted so far. Pages for 2024–2026 identified for future extraction.",
+    consistencyNote: "Declining steadily from 56% (2023) → 20% (2026) as a recruitment challenge.",
   },
   {
     id: "reneges_challenge",
