@@ -134,7 +134,15 @@ const Index = () => {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border">
-                        {({ employer: employerMetrics, candidate: candidateMetrics, graduate: graduateMetrics, intern: internMetrics }[reportType]).map((m) => {
+                        {[...({ employer: employerMetrics, candidate: candidateMetrics, graduate: graduateMetrics, intern: internMetrics }[reportType])].sort((a, b) => {
+                          const aIsSample = a.category === "Methodology" ? 1 : 0;
+                          const bIsSample = b.category === "Methodology" ? 1 : 0;
+                          if (aIsSample !== bIsSample) return bIsSample - aIsSample;
+                          const aAvail = a.dataPoints.filter(d => d.value !== null).length;
+                          const bAvail = b.dataPoints.filter(d => d.value !== null).length;
+                          if (aAvail !== bAvail) return bAvail - aAvail;
+                          return a.label.localeCompare(b.label);
+                        }).map((m) => {
                           const available = m.dataPoints.filter((d) => d.value !== null).length;
                           return (
                             <tr
