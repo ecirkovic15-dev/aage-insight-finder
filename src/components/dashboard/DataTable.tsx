@@ -44,7 +44,7 @@ export function DataTable({ metric }: DataTableProps) {
                 <td className="px-5 py-3 text-right font-mono-data font-semibold text-foreground">
                   {formatValue(dp?.value ?? null, metric.unit)}
                 </td>
-                <td className="px-5 py-3 text-muted-foreground text-[12px]">
+                <td className="px-5 py-3 text-muted-foreground text-[12px] whitespace-nowrap">
                   <HighlightText text={dp?.source ?? "—"} />
                 </td>
                 <td className="px-5 py-3">
