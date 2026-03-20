@@ -12,13 +12,30 @@ interface SidebarProps {
 export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: SidebarProps) {
   const categories = getMetricsByCategory(reportType);
   const [collapsed, setCollapsed] = useState(false);
+  const [width, setWidth] = useState(260);
 
   return (
     <aside
-      className={`shrink-0 bg-card border-r border-border overflow-y-auto h-full transition-all duration-200 ${
-        collapsed ? "w-10" : "w-[260px]"
+      style={!collapsed ? { width: `${width}px` } : undefined}
+      className={`shrink-0 bg-card border-r border-border overflow-y-auto h-full transition-all duration-200 relative ${
+        collapsed ? "w-10" : ""
       }`}
     >
+      {/* Resize handle */}
+      {!collapsed && (
+        <div
+          onMouseDown={(e) => {
+            e.preventDefault();
+            const startX = e.clientX;
+            const startWidth = width;
+            const onMove = (ev: MouseEvent) => setWidth(Math.max(200, Math.min(500, startWidth + ev.clientX - startX)));
+            const onUp = () => { document.removeEventListener("mousemove", onMove); document.removeEventListener("mouseup", onUp); };
+            document.addEventListener("mousemove", onMove);
+            document.addEventListener("mouseup", onUp);
+          }}
+          className="absolute top-0 right-0 w-1 h-full cursor-col-resize hover:bg-primary/20 transition-colors z-10"
+        />
+      )}
       <div className={`flex items-center border-b border-border ${collapsed ? "justify-center py-3" : "justify-between px-5 py-4"}`}>
         {!collapsed && (
           <p className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
