@@ -198,7 +198,7 @@ const Index = () => {
 
                 <TrendChart metric={selectedMetric} />
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
                   <ProvenancePanel metric={selectedMetric} />
                   <DataTable metric={selectedMetric} />
                 </div>

@@ -14,7 +14,7 @@ export function OverviewGrid({ reportType, selectedMetricId, onSelectMetric }: O
   const topMetrics = metrics.slice(0, 6);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
       {topMetrics.map((metric) => (
         <MetricCard
           key={metric.id}
