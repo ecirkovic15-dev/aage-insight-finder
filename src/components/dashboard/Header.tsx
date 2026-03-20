@@ -10,9 +10,10 @@ interface HeaderProps {
   onReportTypeChange: (type: ReportType) => void;
   onSelectMetric: (metric: Metric, reportType?: ReportType) => void;
   searchInputRef?: RefObject<HTMLInputElement>;
+  onOpenSearchDialog?: () => void;
 }
 
-export function Header({ reportType, onReportTypeChange, onSelectMetric, searchInputRef }: HeaderProps) {
+export function Header({ reportType, onReportTypeChange, onSelectMetric, searchInputRef, onOpenSearchDialog }: HeaderProps) {
   const { query, setQuery, results } = useSearch();
   const fallbackRef = useRef<HTMLInputElement>(null);
   const inputRef = searchInputRef || fallbackRef;
@@ -84,6 +85,7 @@ export function Header({ reportType, onReportTypeChange, onSelectMetric, searchI
                 results={results}
                 onSelectMetric={(metric, rt) => { setQuery(""); onSelectMetric(metric, rt); }}
                 onClose={() => setShowResults(false)}
+                onSeeAll={onOpenSearchDialog ? () => { setShowResults(false); onOpenSearchDialog(); } : undefined}
               />
             )}
           </AnimatePresence>

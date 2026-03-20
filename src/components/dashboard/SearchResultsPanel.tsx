@@ -1,6 +1,6 @@
 import { SearchResult } from "@/lib/smartSearch";
 import { Metric, ReportType, employerMetrics, candidateMetrics, graduateMetrics, internMetrics } from "@/data/aageData";
-import { BarChart3, MessageSquareQuote, Sparkles } from "lucide-react";
+import { BarChart3, MessageSquareQuote, Sparkles, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 const REPORT_LABELS: Record<ReportType, string> = {
@@ -21,13 +21,16 @@ interface SearchResultsPanelProps {
   results: SearchResult[];
   onSelectMetric: (metric: Metric, reportType: ReportType) => void;
   onClose: () => void;
+  onSeeAll?: () => void;
 }
 
-export function SearchResultsPanel({ results, onSelectMetric, onClose }: SearchResultsPanelProps) {
+export function SearchResultsPanel({ results, onSelectMetric, onClose, onSeeAll }: SearchResultsPanelProps) {
   if (results.length === 0) return null;
 
   const metricResults = results.filter(r => r.type === "metric");
   const anecdoteResults = results.filter(r => r.type === "anecdote");
+  const cappedMetrics = metricResults.slice(0, 6);
+  const hasMore = metricResults.length > 6;
 
   const allMetrics = [...employerMetrics, ...candidateMetrics, ...graduateMetrics, ...internMetrics];
 
@@ -51,12 +54,12 @@ export function SearchResultsPanel({ results, onSelectMetric, onClose }: SearchR
         </span>
       </div>
 
-      {metricResults.length > 0 && (
+      {cappedMetrics.length > 0 && (
         <div className="p-2">
           <p className="px-2 py-1 text-[10px] font-mono uppercase tracking-wider text-muted-foreground">
             Relevant Metrics
           </p>
-          {metricResults.slice(0, 8).map((r) => (
+          {cappedMetrics.map((r) => (
             <button
               key={`${r.reportType}-${r.id}`}
               onClick={() => {
@@ -78,6 +81,11 @@ export function SearchResultsPanel({ results, onSelectMetric, onClose }: SearchR
                       </span>
                     )}
                   </div>
+                  {r.metric?.category && (
+                    <p className="text-[10px] text-muted-foreground/70 mt-0.5 font-mono uppercase tracking-wide">
+                      {r.metric.category}
+                    </p>
+                  )}
                   <p className="text-[11px] text-muted-foreground mt-0.5 line-clamp-2">
                     {r.snippet}
                   </p>
@@ -88,6 +96,15 @@ export function SearchResultsPanel({ results, onSelectMetric, onClose }: SearchR
               </div>
             </button>
           ))}
+          {hasMore && onSeeAll && (
+            <button
+              onClick={() => { onClose(); onSeeAll(); }}
+              className="w-full flex items-center justify-center gap-1.5 mt-1 py-2 text-[11px] font-medium text-primary hover:text-primary/80 transition-snap rounded-md hover:bg-primary/5"
+            >
+              See all {metricResults.length} results
+              <ArrowRight className="w-3 h-3" />
+            </button>
+          )}
         </div>
       )}
 

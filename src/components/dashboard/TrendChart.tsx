@@ -1,6 +1,6 @@
 import { Metric, years } from "@/data/aageData";
 import {
-  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell,
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, LabelList,
 } from "recharts";
 import { motion } from "framer-motion";
 import { HighlightText } from "./HighlightText";
@@ -15,6 +15,46 @@ const REPORT_BADGE: Record<string, { bg: string; text: string }> = {
   graduate:  { bg: "bg-[hsl(150,50%,93%)]", text: "text-[hsl(150,50%,35%)]" },
   intern:    { bg: "bg-muted", text: "text-muted-foreground" },
 };
+
+interface CustomLabelProps {
+  x?: number;
+  y?: number;
+  width?: number;
+  height?: number;
+  value?: number | null;
+  formatValue: (v: number) => string;
+  chartHeight: number;
+}
+
+function CustomBarLabel({ x = 0, y = 0, width = 0, value, formatValue, chartHeight }: CustomLabelProps) {
+  if (value === null || value === undefined) {
+    return (
+      <text
+        x={x + width / 2}
+        y={chartHeight / 2 + 8}
+        textAnchor="middle"
+        fill="hsl(218, 13%, 62%)"
+        fontSize={10}
+        fontFamily="Geist Mono, monospace"
+      >
+        No data
+      </text>
+    );
+  }
+  return (
+    <text
+      x={x + width / 2}
+      y={y - 6}
+      textAnchor="middle"
+      fill="hsl(220, 61%, 23%)"
+      fontSize={10}
+      fontWeight={500}
+      fontFamily="Geist Mono, monospace"
+    >
+      {formatValue(value)}
+    </text>
+  );
+}
 
 export function TrendChart({ metric }: TrendChartProps) {
   const data = years.map((year) => {
@@ -39,6 +79,8 @@ export function TrendChart({ metric }: TrendChartProps) {
   const barColorMuted = "hsl(220, 13%, 90%)";
   const badge = REPORT_BADGE[metric.reportType] ?? REPORT_BADGE.employer;
 
+  const CHART_HEIGHT = 280;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -62,9 +104,9 @@ export function TrendChart({ metric }: TrendChartProps) {
         </div>
       )}
 
-      <div className="mt-6 h-[280px]">
+      <div className="mt-6" style={{ height: CHART_HEIGHT }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
+          <BarChart data={data} margin={{ top: 24, right: 10, left: 10, bottom: 0 }}>
             <CartesianGrid strokeDasharray="3 3" stroke="hsl(220, 13%, 92%)" vertical={false} />
             <XAxis
               dataKey="year"
@@ -103,6 +145,16 @@ export function TrendChart({ metric }: TrendChartProps) {
               }}
             />
             <Bar dataKey="value" maxBarSize={56} radius={[6, 6, 0, 0]}>
+              <LabelList
+                dataKey="value"
+                content={(props) => (
+                  <CustomBarLabel
+                    {...props}
+                    formatValue={formatValue}
+                    chartHeight={CHART_HEIGHT - 34}
+                  />
+                )}
+              />
               {data.map((entry, index) => (
                 <Cell
                   key={`cell-${index}`}
