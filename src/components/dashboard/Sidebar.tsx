@@ -1,6 +1,6 @@
 import { ReportType, getMetricsByCategory, Metric } from "@/data/aageData";
 import { HighlightText } from "./HighlightText";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { PanelLeftClose, PanelLeftOpen, ChevronDown, ChevronRight } from "lucide-react";
 
 interface SidebarProps {
@@ -13,6 +13,8 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
   const categories = getMetricsByCategory(reportType);
   const [collapsed, setCollapsed] = useState(false);
   const [collapsedCategories, setCollapsedCategories] = useState<Record<string, boolean>>({});
+  const navRef = useRef<HTMLElement>(null);
+  const activeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(max-width: 1023px)");
@@ -21,6 +23,41 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
+
+  useEffect(() => {
+    if (!selectedMetricId) return;
+
+    const categoryOfSelected = Object.entries(categories).find(([, metrics]) =>
+      metrics.some((m) => m.id === selectedMetricId)
+    )?.[0];
+
+    if (categoryOfSelected) {
+      setCollapsedCategories((prev) => {
+        if (prev[categoryOfSelected]) {
+          return { ...prev, [categoryOfSelected]: false };
+        }
+        return prev;
+      });
+    }
+  }, [selectedMetricId]);
+
+  useEffect(() => {
+    if (!selectedMetricId || !activeButtonRef.current || !navRef.current) return;
+
+    const nav = navRef.current;
+    const button = activeButtonRef.current;
+    const navTop = nav.getBoundingClientRect().top;
+    const buttonTop = button.getBoundingClientRect().top;
+    const buttonBottom = button.getBoundingClientRect().bottom;
+    const navBottom = nav.getBoundingClientRect().bottom;
+
+    const isAbove = buttonTop < navTop;
+    const isBelow = buttonBottom > navBottom;
+
+    if (isAbove || isBelow) {
+      button.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }, [selectedMetricId, collapsedCategories]);
 
   const toggleCategory = (category: string) => {
     setCollapsedCategories((prev) => ({ ...prev, [category]: !prev[category] }));
@@ -52,7 +89,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
       </div>
 
       {!collapsed && (
-        <nav className="py-2 px-2 overflow-y-auto flex-1">
+        <nav ref={navRef} className="py-2 px-2 overflow-y-auto flex-1">
           {Object.entries(categories).map(([category, metrics]) => {
             const isCategoryCollapsed = !!collapsedCategories[category];
             const isActiveCategory = metrics.some((m) => m.id === selectedMetricId);
@@ -83,6 +120,7 @@ export function Sidebar({ reportType, selectedMetricId, onSelectMetric }: Sideba
                   return (
                     <button
                       key={metric.id}
+                      ref={isActive ? activeButtonRef : null}
                       onClick={() => onSelectMetric(metric)}
                       className={`w-full text-left px-3 py-1.5 text-[11.5px] transition-snap flex items-center gap-2 rounded-md ${
                         isActive
