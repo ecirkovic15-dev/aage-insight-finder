@@ -88,12 +88,6 @@ const Index = () => {
                   </p>
                 </div>
 
-                <OverviewGrid
-                  reportType={reportType}
-                  selectedMetricId={null}
-                  onSelectMetric={handleSelectMetric}
-                />
-
                 {/* Legend */}
                 <div className="bg-surface border border-border rounded-lg p-4">
                   <h3 className="text-xs font-semibold text-foreground/70 uppercase tracking-wider mb-3">
@@ -151,6 +145,12 @@ const Index = () => {
                     </Tooltip>
                   </div>
                 </div>
+
+                <OverviewGrid
+                  reportType={reportType}
+                  selectedMetricId={null}
+                  onSelectMetric={handleSelectMetric}
+                />
 
                 {/* Confidentiality notice */}
                 <div className="rounded-lg px-4 py-3 flex items-center gap-2 border overflow-hidden" style={{ backgroundColor: "hsl(0, 53%, 88%)", borderColor: "hsl(0, 40%, 82%)" }}>
